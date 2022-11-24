@@ -1,0 +1,3121 @@
+[
+  {
+    "name": "Achat Qté et prix payé par type de produit",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_purchases",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "invoice_status",
+              null
+            ],
+            "invoiced"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "company",
+              null
+            ],
+            "F"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "category",
+              null
+            ],
+            "Green Beans",
+            "Packaging"
+          ]
+        ],
+        "aggregation": [
+          [
+            "avg",
+            [
+              "field",
+              "price_unit",
+              null
+            ]
+          ],
+          [
+            "sum",
+            [
+              "field",
+              "quantity_received",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "product",
+            null
+          ],
+          [
+            "field",
+            "price_unit",
+            null
+          ],
+          [
+            "field",
+            "supplier",
+            null
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "pivot",
+    "visualization_settings": {
+      "graph.dimensions": [
+        "date_purchase",
+        "supplier"
+      ],
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "product",
+            null
+          ],
+          [
+            "field",
+            "supplier",
+            null
+          ],
+          [
+            "field",
+            "price_unit",
+            null
+          ]
+        ],
+        "columns": [],
+        "values": [
+          [
+            "aggregation",
+            0
+          ],
+          [
+            "aggregation",
+            1
+          ]
+        ]
+      },
+      "column_settings": {
+        "[\"ref\",[\"field\",137,null]]": {
+          "pivot_table.column_show_totals": true
+        }
+      },
+      "graph.metrics": [
+        "sum",
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "name": "pivot-grouping",
+        "settings": null,
+        "field_ref": [
+          "expression",
+          "pivot-grouping"
+        ],
+        "effective_type": "type/Text",
+        "id": 137,
+        "visibility_type": "normal",
+        "display_name": "pivot-grouping",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 7.0,
+              "q1": 7.0,
+              "q3": 7.0,
+              "max": 7.0,
+              "sd": null,
+              "avg": 7.0
+            }
+          }
+        },
+        "base_type": "type/Integer"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "name": "avg",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "effective_type": "type/Decimal",
+        "id": 135,
+        "visibility_type": "normal",
+        "display_name": "Average of Price Unit",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 4.284,
+              "q1": 4.284,
+              "q3": 4.284,
+              "max": 4.284,
+              "sd": null,
+              "avg": 4.284
+            }
+          }
+        },
+        "base_type": "type/Decimal"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "name": "sum",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          1
+        ],
+        "effective_type": "type/Text",
+        "id": 148,
+        "visibility_type": "normal",
+        "display_name": "Sum of Quantity Received",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 11188000.0,
+              "q1": 11188000.0,
+              "q3": 11188000.0,
+              "max": 11188000.0,
+              "sd": null,
+              "avg": 11188000.0
+            }
+          }
+        },
+        "base_type": "type/Decimal"
+      }
+    ]
+  },
+  {
+    "name": "Achats Café Quantité par jour",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_purchases",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "invoice_status",
+              null
+            ],
+            "invoiced"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "company",
+              null
+            ],
+            "F"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "category",
+              null
+            ],
+            "Green Beans"
+          ]
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity_received",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "supplier",
+            null
+          ],
+          [
+            "field",
+            "date_purchase",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "graph.dimensions": [
+        "date_purchase",
+        "supplier"
+      ],
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "supplier",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "supplier",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 148,
+        "visibility_type": "normal",
+        "display_name": "Supplier",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 4,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 18.721649484536083
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date_purchase",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "date_purchase",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 147,
+        "visibility_type": "normal",
+        "display_name": "Date Purchase",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 28,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2022-11-16",
+              "latest": "2023-02-19"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "display_name": "Sum of Quantity Received",
+        "semantic_type": null,
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 4,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 15000.0,
+              "q1": 15000.0,
+              "q3": 30000.0,
+              "max": 60000.0,
+              "sd": 17874.562931719476,
+              "avg": 25500.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL Achat prix moyen payé",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_purchases",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "invoice_status",
+              null
+            ],
+            "invoiced"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "category",
+              null
+            ],
+            "Green Beans",
+            "Packaging"
+          ]
+        ],
+        "aggregation": [
+          [
+            "avg",
+            [
+              "field",
+              "price_unit",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "product",
+            null
+          ],
+          [
+            "field",
+            "company",
+            null
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "product",
+            null
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            "company",
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ],
+          [
+            "aggregation",
+            1
+          ]
+        ]
+      },
+      "graph.y_axis.scale": "pow",
+      "graph.y_axis.auto_split": true,
+      "graph.metrics": [
+        "avg"
+      ],
+      "graph.y_axis.axis_enabled": true,
+      "column_settings": {
+        "[\"ref\",[\"field\",137,null]]": {
+          "pivot_table.column_show_totals": true
+        }
+      },
+      "series_settings": {
+        "A": {
+          "color": "#88BF4D"
+        }
+      },
+      "graph.y_axis.auto_range": true,
+      "graph.dimensions": [
+        "product",
+        "company"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 137,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0,
+              "percent-url": 0,
+              "percent-email": 0,
+              "percent-state": 0,
+              "average-length": 16.991163475699558
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 145,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0,
+              "percent-url": 0,
+              "percent-email": 0,
+              "percent-state": 0,
+              "average-length": 1
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Average of Price Unit",
+        "semantic_type": null,
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "avg",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 28,
+            "nil%": 0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.02,
+              "q1": 0.35,
+              "q3": 6.774291885177432,
+              "max": 8,
+              "sd": 3.3064989114114645,
+              "avg": 3.0953187134502924
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL marketing by day",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_marketing_report",
+        "filter": [
+          "=",
+          [
+            "field",
+            "game",
+            null
+          ],
+          "Extended1-2-EE-PTA"
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "start_date",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "company",
+            null
+          ]
+        ],
+        "order-by": [
+          [
+            "asc",
+            [
+              "field",
+              "company",
+              null
+            ]
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "table.pivot": false,
+      "stackable.stack_type": "stacked",
+      "graph.dimensions": [
+        "start_date",
+        "company"
+      ],
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/CreationDate",
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "start_date",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "start_date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 58,
+        "visibility_type": "normal",
+        "display_name": "Start Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 27,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-09",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Company",
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 57,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Sum of Quantity",
+        "semantic_type": null,
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 11,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1.0,
+              "q1": 2.2612038749637415,
+              "q3": 15.0,
+              "max": 60.0,
+              "sd": 15.80221962027918,
+              "avg": 11.166666666666666
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL Production Qty/Day",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_production",
+        "filter": [
+          "=",
+          [
+            "field",
+            "category",
+            null
+          ],
+          "Ground Coffee Packs",
+          "Coffee Pods",
+          "Whole Beans Coffee Bags"
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "company",
+            null
+          ],
+          [
+            "field",
+            "date_finished",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "table",
+    "visualization_settings": {
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "date_finished",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            "company",
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ]
+        ]
+      },
+      "graph.dimensions": [
+        "date_finished",
+        "company"
+      ],
+      "stackable.stack_type": "stacked",
+      "stackable.stack_display": "bar",
+      "table.pivot_column": "company",
+      "table.cell_column": "sum",
+      "column_settings": {
+        "[\"ref\",[\"field\",202,null]]": {
+          "pivot_table.column_sort_order": "ascending",
+          "date_abbreviate": true
+        }
+      },
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 207,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date_finished",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "date_finished",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 202,
+        "visibility_type": "normal",
+        "display_name": "Date Finished",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 32,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-12",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "display_name": "Sum of Quantity",
+        "semantic_type": "type/Category",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 500.0,
+              "q1": 2405.84503050746,
+              "q3": 3000.0,
+              "max": 3000.0,
+              "sd": 727.2734630653155,
+              "avg": 2663.235294117647
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL Purchases Count by supplier",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_purchases",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "invoice_status",
+              null
+            ],
+            "invoiced"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "category",
+              null
+            ],
+            "Green Beans",
+            "Packaging"
+          ]
+        ],
+        "aggregation": [
+          [
+            "count"
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "company",
+            null
+          ],
+          [
+            "field",
+            "supplier",
+            null
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "graph.dimensions": [
+        "company",
+        "supplier"
+      ],
+      "graph.metrics": [
+        "count"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/FK",
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 145,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0,
+              "percent-url": 0,
+              "percent-email": 0,
+              "percent-state": 0,
+              "average-length": 1
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "supplier",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "supplier",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 148,
+        "visibility_type": "normal",
+        "display_name": "Supplier",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 4,
+            "nil%": 0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0,
+              "percent-url": 0,
+              "percent-email": 0,
+              "percent-state": 0,
+              "average-length": 18.721649484536083
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Count",
+        "semantic_type": "type/Quantity",
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "count",
+        "base_type": "type/BigInteger",
+        "effective_type": "type/BigInteger",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 10,
+            "nil%": 0
+          },
+          "type": {
+            "type/Number": {
+              "min": 2,
+              "q1": 2.8062870566386033,
+              "q3": 9.450490243203607,
+              "max": 17,
+              "sd": 4.342844012585193,
+              "avg": 6.882352941176471
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL Stock evolution",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_inventory",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "category",
+              null
+            ],
+            "Whole Beans Coffee Bags",
+            "Ground Coffee Packs"
+          ]
+        ],
+        "aggregation": [
+          [
+            "cum-sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "date",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "product",
+            null
+          ]
+        ],
+        "order-by": [
+          [
+            "asc",
+            [
+              "field",
+              "product",
+              null
+            ]
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "table.pivot": false,
+      "graph.dimensions": [
+        "date",
+        "product"
+      ],
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "table_id": 6,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 51,
+        "visibility_type": "normal",
+        "display_name": "Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 39,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2022-11-16",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "table_id": 6,
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 46,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 19,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 23.24341653308908
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "base_type": "type/Decimal",
+        "semantic_type": null,
+        "settings": null,
+        "name": "sum",
+        "display_name": "Sum of Quantity",
+        "source": "aggregation",
+        "field_ref": [
+          "aggregation",
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Financial Evolution benefice",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_financial",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "type",
+              null
+            ],
+            "Income",
+            "Expenses"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "company",
+              null
+            ],
+            "F"
+          ]
+        ],
+        "aggregation": [
+          [
+            "cum-sum",
+            [
+              "field",
+              "amount",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "company",
+            null
+          ],
+          [
+            "field",
+            "date",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "graph.show_values": false,
+      "graph.show_goal": false,
+      "graph.dimensions": [
+        "date",
+        "company"
+      ],
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Company",
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 92,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 84,
+        "visibility_type": "normal",
+        "display_name": "Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2022-11-16",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "display_name": "Sum of Amount",
+        "semantic_type": null,
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 17,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -64000.0,
+              "q1": 78750.84,
+              "q3": 348126.315,
+              "max": 427291.94,
+              "sd": 158290.40326516796,
+              "avg": 189156.1
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Financial Evolution Dette",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_financial",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "account",
+              null
+            ],
+            "Bank Overdraft (Bank)"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "company",
+              null
+            ],
+            "E"
+          ]
+        ],
+        "aggregation": [
+          [
+            "cum-sum",
+            [
+              "field",
+              "amount",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "date",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "company",
+            null
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "graph.show_values": false,
+      "graph.show_goal": false,
+      "graph.dimensions": [
+        "date",
+        "company"
+      ],
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "date",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            "company",
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ]
+        ]
+      },
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "table_id": 10,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 84,
+        "visibility_type": "normal",
+        "display_name": "Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2022-11-16",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Company",
+        "table_id": 10,
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 92,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "base_type": "type/Decimal",
+        "semantic_type": null,
+        "settings": null,
+        "name": "sum",
+        "display_name": "Sum of Amount",
+        "source": "aggregation",
+        "field_ref": [
+          "aggregation",
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Market AVG price by date",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_market_report",
+        "filter": [
+          "=",
+          [
+            "field",
+            "game",
+            null
+          ],
+          "Extended1-2-EE-PTA"
+        ],
+        "aggregation": [
+          [
+            "avg",
+            [
+              "field",
+              "avg_price",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "product",
+            null
+          ],
+          [
+            "field",
+            "date",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "table.pivot": false,
+      "graph.dimensions": [
+        "date",
+        "product"
+      ],
+      "graph.x_axis.scale": "ordinal",
+      "graph.show_values": true,
+      "graph.metrics": [
+        "avg"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 197,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 25.933333333333334
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 195,
+        "visibility_type": "normal",
+        "display_name": "Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 7,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-12",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "display_name": "Average of Avg Price",
+        "semantic_type": null,
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "avg",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 25,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 40.45870967741935,
+              "q1": 44.40028471089987,
+              "q3": 72.91259133723146,
+              "max": 96.24425707922366,
+              "sd": 16.016729585179267,
+              "avg": 57.02163552384175
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Market quantity by date",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_market_report",
+        "filter": [
+          "=",
+          [
+            "field",
+            "game",
+            null
+          ],
+          "Extended1-2-EE-PTA"
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "product",
+            null
+          ],
+          [
+            "field",
+            "date",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "table.pivot": false,
+      "graph.dimensions": [
+        "date",
+        "product"
+      ],
+      "graph.x_axis.scale": "ordinal",
+      "graph.show_values": true,
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 197,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 25.933333333333334
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 195,
+        "visibility_type": "normal",
+        "display_name": "Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 7,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-12",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "display_name": "Sum of Quantity",
+        "semantic_type": null,
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 21,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 12000.0,
+              "q1": 23021.307704950734,
+              "q3": 92903.77823198233,
+              "max": 220800.0,
+              "sd": 59292.851269713006,
+              "avg": 72057.33333333333
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Marketing type par day",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_marketing_report",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Extended1-2-EE-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "company",
+              null
+            ],
+            "E"
+          ]
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "start_date",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "product",
+            null
+          ]
+        ]
+      },
+      "database": "Aroolla"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "table.pivot": false,
+      "stackable.stack_type": "stacked",
+      "graph.dimensions": [
+        "start_date",
+        "product"
+      ],
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/CreationDate",
+        "table_id": 7,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "start_date",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "start_date",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 58,
+        "visibility_type": "normal",
+        "display_name": "Start Date",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 27,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-09",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "table_id": 7,
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 60,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 3,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 29.444444444444443
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "base_type": "type/Float",
+        "semantic_type": null,
+        "settings": null,
+        "name": "sum",
+        "display_name": "Sum of Quantity",
+        "source": "aggregation",
+        "field_ref": [
+          "aggregation",
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Production Qty / Produit / Jour",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_production",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "category",
+              null
+            ],
+            "Ground Coffee Packs",
+            "Coffee Pods",
+            "Whole Beans Coffee Bags"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "company",
+              null
+            ],
+            "F"
+          ]
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "date_finished",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "product",
+            null
+          ]
+        ],
+        "order-by": [
+          [
+            "asc",
+            [
+              "field",
+              "product",
+              null
+            ]
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "table.pivot": false,
+      "stackable.stack_type": "stacked",
+      "graph.show_goal": true,
+      "graph.goal_value": 3000,
+      "series_settings": {
+        "Mocha Onctuoso Coffee Pods": {
+          "color": "#A7D07C"
+        },
+        "Mocha Onctuoso Bag": {
+          "color": "#88BF4D"
+        },
+        "Toraja Intenso Ground Coffee": {
+          "color": "#ED8535"
+        },
+        "Cattura Generoso Coffee Pods": {
+          "color": "#C8B4DA"
+        },
+        "Decaffeinato Fruttato Coffee Pods": {
+          "color": "#C7EAEA"
+        },
+        "Toraja Intenso Bag": {
+          "color": "#F2A86F"
+        },
+        "Cattura Generoso Bag": {
+          "color": "#A989C5"
+        },
+        "Toraja Intenso Coffee Pods": {
+          "color": "#F7CBA9"
+        },
+        "Decaffeinato Fruttato Ground Coffee": {
+          "color": "#69C8C8"
+        },
+        "Decaffeinato Fruttato Bag": {
+          "color": "#98D9D9"
+        },
+        "Cattura Generoso Ground Coffee": {
+          "color": "#8A5EB0"
+        },
+        "Mocha Onctuoso Ground Coffee": {
+          "color": "#689636"
+        }
+      },
+      "graph.dimensions": [
+        "date_finished",
+        "product"
+      ],
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "table_id": 21,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date_finished",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "date_finished",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 202,
+        "visibility_type": "normal",
+        "display_name": "Date Finished",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 32,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-12",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Product",
+        "table_id": 21,
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 209,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 14,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 27.35843373493976
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "base_type": "type/Decimal",
+        "semantic_type": "type/Category",
+        "settings": null,
+        "name": "sum",
+        "display_name": "Sum of Quantity",
+        "source": "aggregation",
+        "field_ref": [
+          "aggregation",
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sales AVG( sum day qty) over week",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-query": {
+          "source-table": "cube_sales",
+          "filter": [
+            "=",
+            [
+              "field",
+              "game",
+              null
+            ],
+            "Intro-2-EE-PTA"
+          ],
+          "breakout": [
+            [
+              "field",
+              "date_due",
+              {
+                "temporal-unit": "day"
+              }
+            ],
+            [
+              "field",
+              "company",
+              null
+            ],
+            [
+              "field",
+              "product",
+              null
+            ]
+          ],
+          "aggregation": [
+            [
+              "sum",
+              [
+                "field",
+                "quantity",
+                null
+              ]
+            ]
+          ]
+        },
+        "aggregation": [
+          [
+            "avg",
+            [
+              "field",
+              "__NO_REPLACE__sum",
+              {
+                "base-type": "type/Float"
+              }
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "__NO_REPLACE__product",
+            {
+              "base-type": "type/Text"
+            }
+          ],
+          [
+            "field",
+            "__NO_REPLACE__date_due",
+            {
+              "base-type": "type/Date",
+              "temporal-unit": "week"
+            }
+          ],
+          [
+            "field",
+            "__NO_REPLACE__company",
+            {
+              "base-type": "type/Text"
+            }
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "pivot",
+    "visualization_settings": {
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "product",
+            null
+          ],
+          [
+            "field",
+            "date_due",
+            {
+              "temporal-unit": "week"
+            }
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            "company",
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ]
+        ]
+      }
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "name": "pivot-grouping",
+        "settings": null,
+        "field_ref": [
+          "expression",
+          "pivot-grouping"
+        ],
+        "effective_type": "type/Text",
+        "id": 134,
+        "visibility_type": "normal",
+        "display_name": "pivot-grouping",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 7.0,
+              "q1": 7.0,
+              "q3": 7.0,
+              "max": 7.0,
+              "sd": null,
+              "avg": 7.0
+            }
+          }
+        },
+        "base_type": "type/Integer"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Quantity",
+        "coercion_strategy": null,
+        "name": "avg",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "effective_type": "type/DateTimeWithLocalTZ",
+        "id": 129,
+        "visibility_type": "normal",
+        "display_name": "Average of Sum of Quantity",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1131.7773851590107,
+              "q1": 1131.7773851590107,
+              "q3": 1131.7773851590107,
+              "max": 1131.7773851590107,
+              "sd": null,
+              "avg": 1131.7773851590107
+            }
+          }
+        },
+        "base_type": "type/Decimal"
+      }
+    ]
+  },
+  {
+    "name": "Sales By Day/Qty",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_sales",
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "date_due",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "product",
+            null
+          ]
+        ],
+        "order-by": [
+          [
+            "asc",
+            [
+              "field",
+              "product",
+              null
+            ]
+          ],
+          [
+            "asc",
+            [
+              "field",
+              "date_due",
+              {
+                "temporal-unit": "day"
+              }
+            ]
+          ]
+        ]
+      },
+      "type": "query"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "graph.dimensions": [
+        "date_due",
+        "product"
+      ],
+      "series_settings": {
+        "Mocha Onctuoso Coffee Pods": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#A7D07C"
+        },
+        "Mocha Onctuoso Bag": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#88BF4D"
+        },
+        "Toraja Intenso Ground Coffee": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#ED8535"
+        },
+        "Cattura Generoso Coffee Pods": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "line.marker_enabled": null,
+          "axis": null,
+          "color": "#C8B4DA"
+        },
+        "Toraja Intenso Bag": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#F2A86F"
+        },
+        "Cattura Generoso Bag": {
+          "axis": null,
+          "line.interpolate": "step-after",
+          "color": "#A989C5"
+        },
+        "Toraja Intenso Coffee Pods": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#F7CBA9"
+        },
+        "Decaffeinato Fruttato Ground Coffee": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#C7EAEA"
+        },
+        "Decaffeinato Fruttato Bag": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#98D9D9"
+        },
+        "Cattura Generoso Ground Coffee": {
+          "display": "line",
+          "line.interpolate": "step-after",
+          "color": "#8A5EB0"
+        },
+        "Mocha Onctuoso Ground Coffee": {
+          "display": "line",
+          "line.interpolate": "step-after"
+        }
+      },
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "date_due",
+            {
+              "temporal-unit": "day"
+            }
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            "product",
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ],
+          [
+            "aggregation",
+            1
+          ]
+        ]
+      },
+      "scatter.bubble": "sum",
+      "graph.show_goal": false,
+      "graph.show_values": false,
+      "stackable.stack_type": "stacked",
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date_due",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "date_due",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "id": 129,
+        "visibility_type": "normal",
+        "display_name": "Date Due",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 34,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-08",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 134,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 25.818832391713748
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Sum of Quantity",
+        "semantic_type": "type/Quantity",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 53,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 105.0,
+              "q1": 999.5173508448,
+              "q3": 3006.487059502132,
+              "max": 6600.0,
+              "sd": 1556.73878432818,
+              "avg": 2133.2763157894738
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Sales nb de clients distinct ayant acheté un produit",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_sales",
+        "expressions": {
+          "Segment": [
+            "case",
+            [
+              [
+                [
+                  "starts-with",
+                  [
+                    "field",
+                    "customer",
+                    null
+                  ],
+                  "Coffee"
+                ],
+                "HORECA"
+              ],
+              [
+                [
+                  "starts-with",
+                  [
+                    "field",
+                    "customer",
+                    null
+                  ],
+                  "Corp"
+                ],
+                "Distributeur"
+              ],
+              [
+                [
+                  "starts-with",
+                  [
+                    "field",
+                    "customer",
+                    null
+                  ],
+                  "Food"
+                ],
+                "Détaillant"
+              ]
+            ]
+          ]
+        },
+        "aggregation": [
+          [
+            "distinct",
+            [
+              "field",
+              "customer",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "expression",
+            "Segment"
+          ],
+          [
+            "field",
+            "product",
+            null
+          ]
+        ],
+        "filter": [
+          "=",
+          [
+            "field",
+            "game",
+            null
+          ],
+          "Extended1-2-EE-PTA"
+        ]
+      },
+      "type": "query"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "table.pivot_column": "Segment",
+      "table.cell_column": "sum",
+      "graph.dimensions": [
+        "product",
+        "Segment"
+      ],
+      "graph.metrics": [
+        "count"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "display_name": "Segment",
+        "field_ref": [
+          "expression",
+          "Segment"
+        ],
+        "name": "Segment",
+        "base_type": "type/Text",
+        "effective_type": "type/Text",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 3,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 9.090909090909092
+            }
+          }
+        }
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Product",
+        "coercion_strategy": null,
+        "name": "product",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "product",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 134,
+        "visibility_type": "normal",
+        "display_name": "Product",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 25.818832391713748
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Distinct values of Customer",
+        "semantic_type": "type/Quantity",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "count",
+        "base_type": "type/BigInteger",
+        "effective_type": "type/BigInteger",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 6,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 2.0,
+              "q1": 4.375,
+              "q3": 7.964376360264856,
+              "max": 10.0,
+              "sd": 2.449489742783178,
+              "avg": 6.0
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Segment grouping",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla",
+      "query": {
+        "source-table": "cube_sales",
+        "expressions": {
+          "Segment": [
+            "case",
+            [
+              [
+                [
+                  "starts-with",
+                  [
+                    "field",
+                    "customer",
+                    null
+                  ],
+                  "Coffee"
+                ],
+                "HORECA"
+              ],
+              [
+                [
+                  "starts-with",
+                  [
+                    "field",
+                    "customer",
+                    null
+                  ],
+                  "Corp"
+                ],
+                "Distributeur"
+              ],
+              [
+                [
+                  "starts-with",
+                  [
+                    "field",
+                    "customer",
+                    null
+                  ],
+                  "Food"
+                ],
+                "Détaillant"
+              ]
+            ]
+          ]
+        },
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "quantity",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "expression",
+            "Segment"
+          ],
+          [
+            "field",
+            "category",
+            null
+          ]
+        ],
+        "filter": [
+          "=",
+          [
+            "field",
+            "game",
+            null
+          ],
+          "Extended1-2-EE-PTA"
+        ]
+      },
+      "type": "query"
+    },
+    "display": "table",
+    "visualization_settings": {
+      "table.pivot_column": "Segment",
+      "table.cell_column": "sum"
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "display_name": "Segment",
+        "field_ref": [
+          "expression",
+          "Segment"
+        ],
+        "name": "Segment",
+        "base_type": "type/Text",
+        "effective_type": "type/Text",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 3,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 9.333333333333334
+            }
+          }
+        }
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Category",
+        "coercion_strategy": null,
+        "name": "category",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "category",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 133,
+        "visibility_type": "normal",
+        "display_name": "Category",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 3,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 17.24783427495292
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Sum of Quantity",
+        "semantic_type": "type/Quantity",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 3,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 40183.0,
+              "q1": 44962.25,
+              "q3": 61809.5,
+              "max": 62646.0,
+              "sd": 12119.14308026768,
+              "avg": 54043.0
+            }
+          }
+        }
+      }
+    ]
+  }
+]
