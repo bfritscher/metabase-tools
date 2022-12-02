@@ -132,15 +132,15 @@
         "fingerprint": {
           "global": {
             "distinct-count": 8,
-            "nil%": 0
+            "nil%": 0.0
           },
           "type": {
             "type/Text": {
-              "percent-json": 0,
-              "percent-url": 0,
-              "percent-email": 0,
-              "percent-state": 0,
-              "average-length": 1
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
             }
           }
         }
@@ -161,7 +161,7 @@
         "fingerprint": {
           "global": {
             "distinct-count": 30,
-            "nil%": 0
+            "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
@@ -187,7 +187,7 @@
         "fingerprint": {
           "global": {
             "distinct-count": 212,
-            "nil%": 0
+            "nil%": 0.0
           },
           "type": {
             "type/Number": {
@@ -3688,43 +3688,7 @@
           ]
         ],
         "expressions": {
-          "net_income": [
-            "case",
-            [
-              [
-                [
-                  "or",
-                  [
-                    "=",
-                    [
-                      "field",
-                      "cube_financial.type",
-                      null
-                    ],
-                    "Expenses"
-                  ],
-                  [
-                    "=",
-                    [
-                      "field",
-                      "cube_financial.type",
-                      null
-                    ],
-                    "Income"
-                  ]
-                ],
-                [
-                  "field",
-                  "cube_financial.amount",
-                  null
-                ]
-              ]
-            ],
-            {
-              "default": 0
-            }
-          ],
-          "debt": [
+          "marketing": [
             "case",
             [
               [
@@ -3735,55 +3699,7 @@
                     "cube_financial.account_code",
                     null
                   ],
-                  "2100"
-                ],
-                [
-                  "field",
-                  "cube_financial.amount",
-                  null
-                ]
-              ]
-            ],
-            {
-              "default": 0
-            }
-          ],
-          "sales": [
-            "case",
-            [
-              [
-                [
-                  "=",
-                  [
-                    "field",
-                    "cube_financial.account_code",
-                    null
-                  ],
-                  "3200"
-                ],
-                [
-                  "field",
-                  "cube_financial.amount",
-                  null
-                ]
-              ]
-            ],
-            {
-              "default": 0
-            }
-          ],
-          "cogs": [
-            "case",
-            [
-              [
-                [
-                  "=",
-                  [
-                    "field",
-                    "cube_financial.account_code",
-                    null
-                  ],
-                  "4008"
+                  "6600"
                 ],
                 [
                   "*",
@@ -3824,7 +3740,7 @@
               "default": 0
             }
           ],
-          "marketing": [
+          "cogs": [
             "case",
             [
               [
@@ -3835,7 +3751,7 @@
                     "cube_financial.account_code",
                     null
                   ],
-                  "6600"
+                  "4008"
                 ],
                 [
                   "*",
@@ -3845,6 +3761,30 @@
                     null
                   ],
                   -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "Cash": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "1022"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
                 ]
               ]
             ],
@@ -3873,6 +3813,42 @@
                     null
                   ],
                   -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "net_income": [
+            "case",
+            [
+              [
+                [
+                  "or",
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.type",
+                      null
+                    ],
+                    "Expenses"
+                  ],
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.type",
+                      null
+                    ],
+                    "Income"
+                  ]
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
                 ]
               ]
             ],
@@ -3913,6 +3889,54 @@
                     null
                   ],
                   -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "sales": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "3200"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "debt": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "2100"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
                 ]
               ]
             ],
@@ -4122,6 +4146,24 @@
               "name": "Net margin (%)",
               "display-name": "Net margin (%)"
             }
+          ],
+          [
+            "aggregation-options",
+            [
+              "*",
+              [
+                "sum",
+                [
+                  "expression",
+                  "Cash"
+                ]
+              ],
+              -1
+            ],
+            {
+              "name": "Cash",
+              "display-name": "Cash"
+            }
           ]
         ],
         "breakout": [
@@ -4245,6 +4287,15 @@
             9
           ],
           "enabled": true
+        },
+        {
+          "name": "Cash",
+          "field_ref": [
+            "aggregation",
+            11,
+            null
+          ],
+          "enabled": true
         }
       ],
       "table.column_formatting": [
@@ -4316,6 +4367,10 @@
           "number_separators": ".’",
           "decimals": 0,
           "show_mini_bar": true
+        },
+        "[\"name\",\"Cash\"]": {
+          "number_separators": ".’",
+          "decimals": 2
         },
         "[\"name\",\"Net margin (%)\"]": {
           "number_style": "percent",
@@ -4656,6 +4711,33 @@
               "max": 0.3397603299684562,
               "sd": 0.12928286300158903,
               "avg": 0.10459656789892101
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Cash",
+        "field_ref": [
+          "aggregation",
+          11
+        ],
+        "name": "Cash",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 100028.85,
+              "q1": 561437.4,
+              "q3": 1277220.6400000001,
+              "max": 2751988.45,
+              "sd": 812961.8669476608,
+              "avg": 1036072.36
             }
           }
         }
