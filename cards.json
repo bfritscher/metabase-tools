@@ -599,12 +599,11 @@
     ]
   },
   {
-    "name": "ALL Gross Margin by Product",
+    "name": "ALL Gross Margin by Date",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "type": "native",
       "native": {
-        "query": "SELECT \n  \"sales\".\"company\" AS \"company\", \n  \"sales\".\"product\" AS \"product\", \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"product\" AS \"product\", \n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"product\" \n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"product\" AS \"product\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"product\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\" \n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"product\" = \"inventory\".\"product\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"product\" \nORDER BY \n  \"sales\".\"company\" ASC, \n  \"sales\".\"product\" ASC\n",
         "template-tags": {
           "classroom": {
             "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
@@ -634,13 +633,506 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended1-2-EE-PTA"
+              "Extended-2 2-PTA"
             ],
             "required": true
           }
+        },
+        "query": "SELECT \n  \"sales\".\"date\" AS \"date\",\n  \"sales\".\"company\" AS \"company\", \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"date_invoice\" AS \"date\",\n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"date_invoice\"\n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      \"cube_inventory\".\"date\",\n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\",\n      \"cube_inventory\".\"date\"\n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"date\" = \"inventory\".\"date\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"date\"\nORDER BY \n  \"sales\".\"date\" ASC, \n  \"sales\".\"company\" ASC\n"
+      },
+      "database": "Aroolla 2-PTA"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "graph.show_goal": true,
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            170,
+            null
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            167,
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ]
+        ]
+      },
+      "graph.show_values": true,
+      "table.pivot": true,
+      "table.cell_column": "Gross margin",
+      "graph.goal_label": "0",
+      "graph.x_axis.axis_enabled": true,
+      "graph.goal_value": 0,
+      "graph.metrics": [
+        "Gross margin"
+      ],
+      "table.pivot_column": "company",
+      "column_settings": {
+        "[\"name\",\"Gross margin\"]": {
+          "number_style": "decimal",
+          "decimals": 2
+        },
+        "[\"name\",\"date\"]": {
+          "date_abbreviate": true,
+          "date_style": "D/M/YYYY"
         }
       },
-      "type": "native"
+      "graph.dimensions": [
+        "date",
+        "company"
+      ]
+    },
+    "parameters": [
+      {
+        "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "classroom"
+          ]
+        ],
+        "name": "Classroom",
+        "slug": "classroom",
+        "default": [
+          "2-PTA"
+        ]
+      },
+      {
+        "id": "555ac0b6-9e04-be0e-045b-44e723483dc7",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "game"
+          ]
+        ],
+        "name": "Game",
+        "slug": "game",
+        "default": [
+          "Extended-2 2-PTA"
+        ]
+      }
+    ],
+    "result_metadata": [
+      {
+        "display_name": "date",
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "base-type": "type/Date"
+          }
+        ],
+        "name": "date",
+        "base_type": "type/Date",
+        "effective_type": "type/Date",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 27,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-03-04T00:00:00Z",
+              "latest": "2023-03-30T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "display_name": "company",
+        "field_ref": [
+          "field",
+          "company",
+          {
+            "base-type": "type/Text"
+          }
+        ],
+        "name": "company",
+        "base_type": "type/Text",
+        "effective_type": "type/Text",
+        "semantic_type": "type/Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Gross margin",
+        "field_ref": [
+          "field",
+          "Gross margin",
+          {
+            "base-type": "type/Float"
+          }
+        ],
+        "name": "Gross margin",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": "type/GrossMargin",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 151,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -9.285714285714286,
+              "q1": 18.17326665309647,
+              "q3": 32.01856861143381,
+              "max": 52.184982225189,
+              "sd": 11.10862008179305,
+              "avg": 25.449662998790966
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL Gross Margin by Date with calendar",
+    "description": null,
+    "dataset_query": {
+      "type": "native",
+      "native": {
+        "template-tags": {
+          "classroom": {
+            "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
+            "name": "classroom",
+            "display-name": "Classroom",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.classroom",
+              null
+            ],
+            "widget-type": "string/=",
+            "default": [
+              "2-PTA"
+            ],
+            "required": true
+          },
+          "game": {
+            "id": "555ac0b6-9e04-be0e-045b-44e723483dc7",
+            "name": "game",
+            "display-name": "Game",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.game",
+              null
+            ],
+            "widget-type": "string/=",
+            "default": [
+              "Extended-2 2-PTA"
+            ],
+            "required": true
+          }
+        },
+        "query": "SELECT d.date, company, \"Gross margin\", \"day\", \"round\"\nFROM (\nSELECT \n  \"sales\".\"date\" AS \"date\",\n  \"sales\".\"company\" AS \"company\",\n  \"sales\".\"game\",\n  \"sales\".\"classroom\",\n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"date_invoice\" AS \"date\",\n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"date_invoice\"\n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      \"cube_inventory\".\"date\",\n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\",\n      \"cube_inventory\".\"date\"\n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"date\" = \"inventory\".\"date\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"date\",\n  \"sales\".\"classroom\",\n  \"sales\".\"game\"\n) d INNER JOIN \"cube_calendar\" ON d.\"date\" = \"cube_calendar\".\"date\"  AND d.\"game\" = \"cube_calendar\".\"game\" AND d.\"classroom\" = \"cube_calendar\".\"classroom\"\nORDER BY \n  \"day\" ASC, \n  \"company\" ASC\n"
+      },
+      "database": "Aroolla 2-PTA"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "graph.show_goal": true,
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            170,
+            null
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            167,
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ]
+        ]
+      },
+      "graph.show_values": true,
+      "table.pivot": true,
+      "table.cell_column": "Gross margin",
+      "graph.goal_label": "0",
+      "graph.x_axis.axis_enabled": true,
+      "graph.goal_value": 0,
+      "graph.metrics": [
+        "Gross margin"
+      ],
+      "table.pivot_column": "company",
+      "column_settings": {
+        "[\"name\",\"Gross margin\"]": {
+          "number_style": "decimal",
+          "decimals": 2
+        },
+        "[\"name\",\"date\"]": {
+          "date_abbreviate": true,
+          "date_style": "D/M/YYYY"
+        }
+      },
+      "graph.dimensions": [
+        "day",
+        "company"
+      ]
+    },
+    "parameters": [
+      {
+        "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "classroom"
+          ]
+        ],
+        "name": "Classroom",
+        "slug": "classroom",
+        "default": [
+          "2-PTA"
+        ]
+      },
+      {
+        "id": "555ac0b6-9e04-be0e-045b-44e723483dc7",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "game"
+          ]
+        ],
+        "name": "Game",
+        "slug": "game",
+        "default": [
+          "Extended-2 2-PTA"
+        ]
+      }
+    ],
+    "result_metadata": [
+      {
+        "display_name": "date",
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "base-type": "type/Date"
+          }
+        ],
+        "name": "date",
+        "base_type": "type/Date",
+        "effective_type": "type/Date",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 27,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-03-04T00:00:00Z",
+              "latest": "2023-03-30T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "display_name": "company",
+        "field_ref": [
+          "field",
+          "company",
+          {
+            "base-type": "type/Text"
+          }
+        ],
+        "name": "company",
+        "base_type": "type/Text",
+        "effective_type": "type/Text",
+        "semantic_type": "type/Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Gross margin",
+        "field_ref": [
+          "field",
+          "Gross margin",
+          {
+            "base-type": "type/Float"
+          }
+        ],
+        "name": "Gross margin",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": "type/GrossMargin",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 151,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -9.285714285714286,
+              "q1": 18.17326665309647,
+              "q3": 32.01856861143381,
+              "max": 52.184982225189,
+              "sd": 11.10862008179305,
+              "avg": 25.449662998790966
+            }
+          }
+        }
+      },
+      {
+        "display_name": "day",
+        "field_ref": [
+          "field",
+          "day",
+          {
+            "base-type": "type/BigInteger"
+          }
+        ],
+        "name": "day",
+        "base_type": "type/BigInteger",
+        "effective_type": "type/BigInteger",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 27,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 4.0,
+              "q1": 11.464101615137753,
+              "q3": 23.833333333333332,
+              "max": 30.0,
+              "sd": 7.431952835962755,
+              "avg": 17.60625
+            }
+          }
+        }
+      },
+      {
+        "display_name": "round",
+        "field_ref": [
+          "field",
+          "round",
+          {
+            "base-type": "type/Decimal"
+          }
+        ],
+        "name": "round",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 3,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1.0,
+              "q1": 1.5366889059209572,
+              "q3": 2.8241308447305222,
+              "max": 3.0,
+              "sd": 0.7485573126451076,
+              "avg": 2.15625
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "ALL Gross Margin by Product",
+    "description": null,
+    "dataset_query": {
+      "type": "native",
+      "native": {
+        "template-tags": {
+          "classroom": {
+            "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
+            "name": "classroom",
+            "display-name": "Classroom",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.classroom",
+              null
+            ],
+            "widget-type": "string/=",
+            "default": [
+              "2-PTA"
+            ],
+            "required": true
+          },
+          "game": {
+            "id": "555ac0b6-9e04-be0e-045b-44e723483dc7",
+            "name": "game",
+            "display-name": "Game",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.game",
+              null
+            ],
+            "widget-type": "string/=",
+            "default": [
+              "Extended-2 2-PTA"
+            ],
+            "required": true
+          }
+        },
+        "query": "SELECT \n  \"sales\".\"company\" AS \"company\", \n  \"sales\".\"product\" AS \"product\", \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"product\" AS \"product\", \n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"product\" \n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"product\" AS \"product\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"product\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\" \n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"product\" = \"inventory\".\"product\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"product\" \nORDER BY \n  \"sales\".\"company\" ASC, \n  \"sales\".\"product\" ASC\n"
+      },
+      "database": "Aroolla 2-PTA"
     },
     "display": "table",
     "visualization_settings": {
@@ -703,7 +1195,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended1-2-EE-PTA"
+          "Extended-2 2-PTA"
         ]
       }
     ],
@@ -1015,7 +1507,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_market_report.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -1024,7 +1516,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_market_report.classroom",
               null
             ],
             "2-PTA"
@@ -1035,7 +1527,7 @@
             "avg",
             [
               "field",
-              "avg_price",
+              "cube_market_report.avg_price",
               null
             ]
           ]
@@ -1043,12 +1535,12 @@
         "breakout": [
           [
             "field",
-            "product",
+            "cube_market_report.product",
             null
           ],
           [
             "field",
-            "date",
+            "cube_market_report.date",
             {
               "temporal-unit": "day"
             }
@@ -1080,7 +1572,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "product",
+          "cube_market_report.product",
           null
         ],
         "effective_type": "type/Text",
@@ -1113,7 +1605,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "date",
+          "cube_market_report.date",
           {
             "temporal-unit": "day"
           }
@@ -1179,7 +1671,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_market_report.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -1188,7 +1680,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_market_report.classroom",
               null
             ],
             "2-PTA"
@@ -1199,7 +1691,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_market_report.quantity",
               null
             ]
           ]
@@ -1207,12 +1699,12 @@
         "breakout": [
           [
             "field",
-            "product",
+            "cube_market_report.product",
             null
           ],
           [
             "field",
-            "date",
+            "cube_market_report.date",
             {
               "temporal-unit": "day"
             }
@@ -1244,7 +1736,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "product",
+          "cube_market_report.product",
           null
         ],
         "effective_type": "type/Text",
@@ -1277,7 +1769,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "date",
+          "cube_market_report.date",
           {
             "temporal-unit": "day"
           }
@@ -1343,7 +1835,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_marketing_report.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -1352,7 +1844,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_marketing_report.classroom",
               null
             ],
             "2-PTA"
@@ -1363,7 +1855,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_marketing_report.quantity",
               null
             ]
           ]
@@ -1371,14 +1863,14 @@
         "breakout": [
           [
             "field",
-            "start_date",
+            "cube_marketing_report.start_date",
             {
               "temporal-unit": "day"
             }
           ],
           [
             "field",
-            "company",
+            "cube_marketing_report.company",
             null
           ]
         ],
@@ -1387,7 +1879,7 @@
             "asc",
             [
               "field",
-              "company",
+              "cube_marketing_report.company",
               null
             ]
           ]
@@ -1418,7 +1910,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "start_date",
+          "cube_marketing_report.start_date",
           {
             "temporal-unit": "day"
           }
@@ -1449,7 +1941,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "company",
+          "cube_marketing_report.company",
           null
         ],
         "effective_type": "type/Text",
@@ -1516,7 +2008,7 @@
             "=",
             [
               "field",
-              "category",
+              "cube_production.category",
               null
             ],
             "Ground Coffee Packs",
@@ -1527,7 +2019,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_production.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -1536,7 +2028,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_production.classroom",
               null
             ],
             "2-PTA"
@@ -1547,7 +2039,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_production.quantity",
               null
             ]
           ]
@@ -1555,12 +2047,12 @@
         "breakout": [
           [
             "field",
-            "company",
+            "cube_production.company",
             null
           ],
           [
             "field",
-            "date_finished",
+            "cube_production.date_finished",
             {
               "temporal-unit": "day"
             }
@@ -1575,7 +2067,7 @@
         "rows": [
           [
             "field",
-            "date_finished",
+            "cube_production.date_finished",
             {
               "temporal-unit": "day"
             }
@@ -1584,7 +2076,7 @@
         "columns": [
           [
             "field",
-            "company",
+            "cube_production.company",
             null
           ]
         ],
@@ -1623,7 +2115,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "company",
+          "cube_production.company",
           null
         ],
         "effective_type": "type/Text",
@@ -1656,7 +2148,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "date_finished",
+          "cube_production.date_finished",
           {
             "temporal-unit": "day"
           }
@@ -1722,7 +2214,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_purchases.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -1731,7 +2223,7 @@
             "=",
             [
               "field",
-              "invoice_status",
+              "cube_purchases.invoice_status",
               null
             ],
             "invoiced"
@@ -1740,7 +2232,7 @@
             "=",
             [
               "field",
-              "category",
+              "cube_purchases.category",
               null
             ],
             "Green Beans",
@@ -1750,7 +2242,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_purchases.classroom",
               null
             ],
             "2-PTA"
@@ -1761,7 +2253,7 @@
             "avg",
             [
               "field",
-              "price_unit",
+              "cube_purchases.price_unit",
               null
             ]
           ]
@@ -1769,12 +2261,12 @@
         "breakout": [
           [
             "field",
-            "product",
+            "cube_purchases.product",
             null
           ],
           [
             "field",
-            "company",
+            "cube_purchases.company",
             null
           ]
         ]
@@ -1787,14 +2279,14 @@
         "rows": [
           [
             "field",
-            "product",
+            "cube_purchases.product",
             null
           ]
         ],
         "columns": [
           [
             "field",
-            "company",
+            "cube_purchases.company",
             null
           ]
         ],
@@ -1841,7 +2333,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "product",
+          "cube_purchases.product",
           null
         ],
         "effective_type": "type/Text",
@@ -1873,7 +2365,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "company",
+          "cube_purchases.company",
           null
         ],
         "effective_type": "type/Text",
@@ -1940,7 +2432,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_purchases.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -1949,7 +2441,7 @@
             "=",
             [
               "field",
-              "invoice_status",
+              "cube_purchases.invoice_status",
               null
             ],
             "invoiced"
@@ -1958,7 +2450,7 @@
             "=",
             [
               "field",
-              "category",
+              "cube_purchases.category",
               null
             ],
             "Green Beans",
@@ -1968,7 +2460,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_purchases.classroom",
               null
             ],
             "2-PTA"
@@ -1982,12 +2474,12 @@
         "breakout": [
           [
             "field",
-            "company",
+            "cube_purchases.company",
             null
           ],
           [
             "field",
-            "supplier",
+            "cube_purchases.supplier",
             null
           ]
         ]
@@ -2014,7 +2506,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "company",
+          "cube_purchases.company",
           null
         ],
         "effective_type": "type/Text",
@@ -2046,7 +2538,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "supplier",
+          "cube_purchases.supplier",
           null
         ],
         "effective_type": "type/Text",
@@ -2111,7 +2603,7 @@
             "avg",
             [
               "field",
-              "price_unit",
+              "cube_sales.price_unit",
               null
             ]
           ]
@@ -2119,17 +2611,17 @@
         "breakout": [
           [
             "field",
-            "product",
+            "cube_sales.product",
             null
           ],
           [
             "field",
-            "category",
+            "cube_sales.category",
             null
           ],
           [
             "field",
-            "date_invoice",
+            "cube_sales.date_invoice",
             {
               "temporal-unit": "day"
             }
@@ -2141,7 +2633,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_sales.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -2150,7 +2642,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_sales.classroom",
               null
             ],
             "2-PTA"
@@ -2161,7 +2653,7 @@
             "asc",
             [
               "field",
-              "category",
+              "cube_sales.category",
               null
             ]
           ]
@@ -2185,19 +2677,15 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 81,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
-          "product",
+          "cube_sales.product",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
         "id": 796,
         "visibility_type": "normal",
         "display_name": "Product",
@@ -2221,19 +2709,15 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 81,
         "coercion_strategy": null,
         "name": "category",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
-          "category",
+          "cube_sales.category",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
         "id": 795,
         "visibility_type": "normal",
         "display_name": "Category",
@@ -2257,22 +2741,18 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 81,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date_invoice",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
-          "date_invoice",
+          "cube_sales.date_invoice",
           {
             "temporal-unit": "day"
           }
         ],
         "effective_type": "type/Date",
-        "nfc_path": null,
-        "parent_id": null,
         "id": 790,
         "visibility_type": "normal",
         "display_name": "Date Invoice",
@@ -2291,16 +2771,32 @@
         "base_type": "type/Date"
       },
       {
-        "base_type": "type/Decimal",
+        "display_name": "Moyenne de Price Unit",
         "semantic_type": null,
         "settings": null,
-        "name": "avg",
-        "display_name": "Moyenne de Price Unit",
-        "source": "aggregation",
         "field_ref": [
           "aggregation",
           0
-        ]
+        ],
+        "name": "avg",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 135,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 38.76,
+              "q1": 45.089930555555554,
+              "q3": 76.29874081944752,
+              "max": 85.0,
+              "sd": 15.492402726133854,
+              "avg": 61.40561481754372
+            }
+          }
+        }
       }
     ]
   },
@@ -2320,7 +2816,7 @@
                   "starts-with",
                   [
                     "field",
-                    "customer",
+                    "cube_sales.customer",
                     null
                   ],
                   "Coffee"
@@ -2332,7 +2828,7 @@
                   "starts-with",
                   [
                     "field",
-                    "customer",
+                    "cube_sales.customer",
                     null
                   ],
                   "Corp"
@@ -2344,7 +2840,7 @@
                   "starts-with",
                   [
                     "field",
-                    "customer",
+                    "cube_sales.customer",
                     null
                   ],
                   "Food"
@@ -2359,7 +2855,7 @@
             "distinct",
             [
               "field",
-              "customer",
+              "cube_sales.customer",
               null
             ]
           ]
@@ -2371,12 +2867,12 @@
           ],
           [
             "field",
-            "product",
+            "cube_sales.product",
             null
           ],
           [
             "field",
-            "category",
+            "cube_sales.category",
             null
           ]
         ],
@@ -2386,7 +2882,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_sales.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -2395,7 +2891,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_sales.classroom",
               null
             ],
             "2-PTA"
@@ -2406,7 +2902,7 @@
             "asc",
             [
               "field",
-              "category",
+              "cube_sales.category",
               null
             ]
           ]
@@ -2461,7 +2957,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "product",
+          "cube_sales.product",
           null
         ],
         "effective_type": "type/Text",
@@ -2493,7 +2989,7 @@
         "settings": null,
         "field_ref": [
           "field",
-          "category",
+          "cube_sales.category",
           null
         ],
         "effective_type": "type/Text",
@@ -2559,7 +3055,7 @@
             "avg",
             [
               "field",
-              "price_unit",
+              "cube_sales.price_unit",
               null
             ]
           ],
@@ -2567,7 +3063,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_sales.quantity",
               null
             ]
           ]
@@ -2575,17 +3071,17 @@
         "breakout": [
           [
             "field",
-            "product",
+            "cube_sales.product",
             null
           ],
           [
             "field",
-            "category",
+            "cube_sales.category",
             null
           ],
           [
             "field",
-            "price_unit",
+            "cube_sales.price_unit",
             {
               "binning": {
                 "strategy": "default"
@@ -2599,7 +3095,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_sales.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -2608,7 +3104,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_sales.classroom",
               null
             ],
             "2-PTA"
@@ -2619,7 +3115,7 @@
             "asc",
             [
               "field",
-              "category",
+              "cube_sales.category",
               null
             ]
           ]
@@ -2654,7 +3150,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "product",
+          "cube_sales.product",
           null
         ],
         "effective_type": "type/Text",
@@ -2690,7 +3186,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "category",
+          "cube_sales.category",
           null
         ],
         "effective_type": "type/Text",
@@ -2733,7 +3229,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "price_unit",
+          "cube_sales.price_unit",
           {
             "binning": {
               "strategy": "num-bins",
@@ -2810,7 +3306,7 @@
                   "starts-with",
                   [
                     "field",
-                    "customer",
+                    "cube_sales.customer",
                     null
                   ],
                   "Coffee"
@@ -2822,7 +3318,7 @@
                   "starts-with",
                   [
                     "field",
-                    "customer",
+                    "cube_sales.customer",
                     null
                   ],
                   "Corp"
@@ -2834,7 +3330,7 @@
                   "starts-with",
                   [
                     "field",
-                    "customer",
+                    "cube_sales.customer",
                     null
                   ],
                   "Food"
@@ -2849,7 +3345,7 @@
             "sum",
             [
               "field",
-              "price_total",
+              "cube_sales.price_total",
               null
             ]
           ]
@@ -2861,12 +3357,12 @@
           ],
           [
             "field",
-            "category",
+            "cube_sales.category",
             null
           ],
           [
             "field",
-            "company",
+            "cube_sales.company",
             null
           ]
         ],
@@ -2876,7 +3372,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_sales.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -2885,7 +3381,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_sales.classroom",
               null
             ],
             "2-PTA"
@@ -2906,14 +3402,14 @@
           ],
           [
             "field",
-            "company",
+            "cube_sales.company",
             null
           ]
         ],
         "columns": [
           [
             "field",
-            "category",
+            "cube_sales.category",
             null
           ]
         ],
@@ -2975,16 +3471,2343 @@
           },
           "type": {
             "type/Number": {
-              "min": 8747272.9,
-              "q1": 8747272.9,
-              "q3": 8747272.9,
-              "max": 8747272.9,
+              "min": 25330690.08,
+              "q1": 25330690.08,
+              "q3": 25330690.08,
+              "max": 25330690.08,
               "sd": null,
-              "avg": 8747272.9
+              "avg": 25330690.08
             }
           }
         },
         "base_type": "type/Decimal"
+      }
+    ]
+  },
+  {
+    "name": "ALL Sales Total by Date",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_sales",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "cube_sales.game",
+              null
+            ],
+            "Extended-2 2-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "cube_sales.classroom",
+              null
+            ],
+            "2-PTA"
+          ]
+        ],
+        "aggregation": [
+          [
+            "sum",
+            [
+              "field",
+              "cube_sales.price_total",
+              null
+            ]
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "cube_sales.date_invoice",
+            {
+              "temporal-unit": "day"
+            }
+          ],
+          [
+            "field",
+            "cube_sales.company",
+            null
+          ]
+        ],
+        "order-by": [
+          [
+            "asc",
+            [
+              "field",
+              "cube_sales.company",
+              null
+            ]
+          ],
+          [
+            "asc",
+            [
+              "field",
+              "cube_sales.date_invoice",
+              {
+                "temporal-unit": "day"
+              }
+            ]
+          ]
+        ]
+      },
+      "database": "Aroolla 2-PTA"
+    },
+    "display": "bar",
+    "visualization_settings": {
+      "table.pivot": false,
+      "graph.dimensions": [
+        "date_invoice",
+        "company"
+      ],
+      "stackable.stack_type": "stacked",
+      "graph.metrics": [
+        "sum"
+      ]
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "table_id": 81,
+        "coercion_strategy": null,
+        "unit": "day",
+        "name": "date_invoice",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "cube_sales.date_invoice",
+          {
+            "temporal-unit": "day"
+          }
+        ],
+        "effective_type": "type/Date",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 790,
+        "visibility_type": "normal",
+        "display_name": "Date Invoice",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 34,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2023-01-08",
+              "latest": "2023-02-20"
+            }
+          }
+        },
+        "base_type": "type/Date"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/Company",
+        "table_id": 81,
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "source": "breakout",
+        "field_ref": [
+          "field",
+          "cube_sales.company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 793,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "base_type": "type/Decimal",
+        "semantic_type": null,
+        "settings": null,
+        "name": "sum",
+        "display_name": "Somme de Price Total",
+        "source": "aggregation",
+        "field_ref": [
+          "aggregation",
+          0
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Dashboard",
+    "description": null,
+    "dataset_query": {
+      "type": "query",
+      "query": {
+        "source-table": "cube_financial",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "cube_financial.classroom",
+              null
+            ],
+            "2-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "cube_financial.game",
+              null
+            ],
+            "Extended-2 2-PTA"
+          ]
+        ],
+        "expressions": {
+          "net_income": [
+            "case",
+            [
+              [
+                [
+                  "or",
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.type",
+                      null
+                    ],
+                    "Expenses"
+                  ],
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.type",
+                      null
+                    ],
+                    "Income"
+                  ]
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "debt": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "2100"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "sales": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "3200"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "cogs": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "4008"
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "equity": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.type",
+                    null
+                  ],
+                  "Equity"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "marketing": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "6600"
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "financial expenses": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "6900"
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "rent and salaries": [
+            "case",
+            [
+              [
+                [
+                  "or",
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.account_code",
+                      null
+                    ],
+                    "6000"
+                  ],
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.account_code",
+                      null
+                    ],
+                    "5000"
+                  ]
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ]
+        },
+        "aggregation": [
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "-",
+                  [
+                    "expression",
+                    "sales"
+                  ],
+                  [
+                    "expression",
+                    "cogs"
+                  ]
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "sales"
+                ]
+              ]
+            ],
+            {
+              "name": "Gross margin (%)",
+              "display-name": "Gross margin (%)"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "expression",
+                  "debt"
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "equity"
+                ]
+              ]
+            ],
+            {
+              "name": "Debt/Equity (%)",
+              "display-name": "Debt/Equity (%)"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "expression",
+                  "marketing"
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "sales"
+                ]
+              ]
+            ],
+            {
+              "name": "Marketing/Sales (%)",
+              "display-name": "Marketing/Sales (%)"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "net_income"
+              ]
+            ],
+            {
+              "name": "Net income",
+              "display-name": "Net income"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "debt"
+              ]
+            ],
+            {
+              "name": "Debt",
+              "display-name": "Debt"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "sales"
+              ]
+            ],
+            {
+              "name": "Sales",
+              "display-name": "Sales"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "cogs"
+              ]
+            ],
+            {
+              "name": "Cogs",
+              "display-name": "Cogs"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "marketing"
+              ]
+            ],
+            {
+              "name": "Marketing",
+              "display-name": "Marketing"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "financial expenses"
+              ]
+            ],
+            {
+              "name": "Financial Expenses",
+              "display-name": "Financial Expenses"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "rent and salaries"
+              ]
+            ],
+            {
+              "name": "Rent & Salaries",
+              "display-name": "Rent & Salaries"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "expression",
+                  "net_income"
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "sales"
+                ]
+              ]
+            ],
+            {
+              "name": "Net margin (%)",
+              "display-name": "Net margin (%)"
+            }
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "cube_financial.company",
+            null
+          ]
+        ],
+        "order-by": [
+          [
+            "desc",
+            [
+              "aggregation",
+              3,
+              null
+            ]
+          ]
+        ]
+      },
+      "database": "Aroolla 2-PTA"
+    },
+    "display": "table",
+    "visualization_settings": {
+      "table.pivot": false,
+      "table.columns": [
+        {
+          "name": "company",
+          "fieldRef": [
+            "field",
+            "cube_financial.company",
+            null
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Net income",
+          "fieldRef": [
+            "aggregation",
+            3
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Sales",
+          "fieldRef": [
+            "aggregation",
+            5
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Cogs",
+          "fieldRef": [
+            "aggregation",
+            6
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Gross margin (%)",
+          "fieldRef": [
+            "aggregation",
+            0
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Net margin (%)",
+          "field_ref": [
+            "aggregation",
+            10,
+            null
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Marketing/Sales (%)",
+          "fieldRef": [
+            "aggregation",
+            2
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Debt/Equity (%)",
+          "fieldRef": [
+            "aggregation",
+            1
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Debt",
+          "fieldRef": [
+            "aggregation",
+            4
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Marketing",
+          "fieldRef": [
+            "aggregation",
+            7
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Financial Expenses",
+          "fieldRef": [
+            "aggregation",
+            8
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Rent & Salaries",
+          "fieldRef": [
+            "aggregation",
+            9
+          ],
+          "enabled": true
+        }
+      ],
+      "table.column_formatting": [
+        {
+          "max_value": 100,
+          "color": "#F7C4C4",
+          "columns": [
+            "Net income"
+          ],
+          "value": 0,
+          "type": "single",
+          "colors": [
+            "#ED6E6E",
+            "#FFFFFF",
+            "#84BB4C"
+          ],
+          "highlight_row": true,
+          "min_value": 0,
+          "min_type": null,
+          "operator": "<",
+          "max_type": null
+        }
+      ],
+      "table.pivot_column": "company",
+      "table.cell_column": "Gross margin (%)",
+      "column_settings": {
+        "[\"name\",\"Marketing/Sales (%)\"]": {
+          "number_style": "percent",
+          "decimals": 2,
+          "show_mini_bar": true
+        },
+        "[\"name\",\"Rent & Salaries\"]": {
+          "number_separators": ".’",
+          "decimals": 0
+        },
+        "[\"name\",\"Debt/Equity (%)\"]": {
+          "show_mini_bar": false,
+          "number_style": "percent",
+          "decimals": 2
+        },
+        "[\"name\",\"Marketing\"]": {
+          "number_separators": ".’",
+          "decimals": 0
+        },
+        "[\"name\",\"Financial Expenses\"]": {
+          "number_separators": ".’",
+          "decimals": 0
+        },
+        "[\"name\",\"Net income\"]": {
+          "number_separators": ".’",
+          "show_mini_bar": true,
+          "decimals": 0,
+          "prefix": ""
+        },
+        "[\"name\",\"Sales\"]": {
+          "number_separators": ".’",
+          "decimals": 0,
+          "number_style": "decimal",
+          "currency": "CHF",
+          "currency_style": "code",
+          "show_mini_bar": true
+        },
+        "[\"name\",\"Debt\"]": {
+          "number_separators": ".’",
+          "decimals": 0,
+          "show_mini_bar": false
+        },
+        "[\"name\",\"Cogs\"]": {
+          "number_separators": ".’",
+          "decimals": 0,
+          "show_mini_bar": true
+        },
+        "[\"name\",\"Net margin (%)\"]": {
+          "number_style": "percent",
+          "show_mini_bar": true,
+          "decimals": 2
+        },
+        "[\"name\",\"Gross margin (%)\"]": {
+          "show_mini_bar": true,
+          "number_style": "percent",
+          "decimals": 2
+        }
+      }
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": "type/Company",
+        "coercion_strategy": null,
+        "name": "company",
+        "settings": null,
+        "field_ref": [
+          "field",
+          "cube_financial.company",
+          null
+        ],
+        "effective_type": "type/Text",
+        "id": 770,
+        "visibility_type": "normal",
+        "display_name": "Company",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
+            }
+          }
+        },
+        "base_type": "type/Text"
+      },
+      {
+        "display_name": "Gross margin (%)",
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "name": "Gross margin (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": "type/GrossMargin",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.1476950399781832,
+              "q1": 0.19176339601040218,
+              "q3": 0.284892273682263,
+              "max": 0.4153440818395299,
+              "sd": 0.08374986651458852,
+              "avg": 0.24929683868493552
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Debt/Equity (%)",
+        "field_ref": [
+          "aggregation",
+          1
+        ],
+        "name": "Debt/Equity (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 4,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.0,
+              "q1": 0.0,
+              "q3": 0.068,
+              "max": 0.3672,
+              "sd": 0.1274265278503656,
+              "avg": 0.06290000000000001
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Marketing/Sales (%)",
+        "field_ref": [
+          "aggregation",
+          2
+        ],
+        "name": "Marketing/Sales (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.0005307670510518509,
+              "q1": 0.0012090878298069135,
+              "q3": 0.0060183573358009385,
+              "max": 0.006579488944269628,
+              "sd": 0.0025994924474442324,
+              "avg": 0.0035710209072699227
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Net income",
+        "semantic_type": "type/Income",
+        "field_ref": [
+          "aggregation",
+          3
+        ],
+        "name": "Net income",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -133238.97,
+              "q1": 35681.75,
+              "q3": 648458.1,
+              "max": 2013933.45,
+              "sd": 694206.9652636675,
+              "avg": 471415.39125
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Debt",
+        "semantic_type": null,
+        "field_ref": [
+          "aggregation",
+          4
+        ],
+        "name": "Debt",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 4,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.0,
+              "q1": 0.0,
+              "q3": 340000.0,
+              "max": 1836000.0,
+              "sd": 637132.639251828,
+              "avg": 314500.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Sales",
+        "semantic_type": null,
+        "field_ref": [
+          "aggregation",
+          5
+        ],
+        "name": "Sales",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1713187.65,
+              "q1": 2349702.8,
+              "q3": 3678975.25,
+              "max": 5927512.05,
+              "sd": 1336783.905352046,
+              "avg": 3166336.26
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Cogs",
+        "field_ref": [
+          "aggregation",
+          6
+        ],
+        "name": "Cogs",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1432918.5,
+              "q1": 1823851.0,
+              "q3": 2682707.5,
+              "max": 3465555.0,
+              "sd": 661189.8071631717,
+              "avg": 2286211.96875
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Marketing",
+        "field_ref": [
+          "aggregation",
+          7
+        ],
+        "name": "Marketing",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1200.0,
+              "q1": 2750.0,
+              "q3": 21850.0,
+              "max": 39000.0,
+              "sd": 13594.641801617492,
+              "avg": 13700.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Financial Expenses",
+        "field_ref": [
+          "aggregation",
+          8
+        ],
+        "name": "Financial Expenses",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 6,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.0,
+              "q1": 1434.6363404506205,
+              "q3": 57577.399999999994,
+              "max": 140428.0,
+              "sd": 49318.040463795514,
+              "avg": 35008.899999999994
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Rent & Salaries",
+        "field_ref": [
+          "aggregation",
+          9
+        ],
+        "name": "Rent & Salaries",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 360000.0,
+              "q1": 360000.0,
+              "q3": 360000.0,
+              "max": 360000.0,
+              "sd": 0.0,
+              "avg": 360000.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Net margin (%)",
+        "field_ref": [
+          "aggregation",
+          10
+        ],
+        "name": "Net margin (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": "type/GrossMargin",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 8,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -0.05307259225226257,
+              "q1": 0.009823432350276058,
+              "q3": 0.17534442982471204,
+              "max": 0.3397603299684562,
+              "sd": 0.12928286300158903,
+              "avg": 0.10459656789892101
+            }
+          }
+        }
+      }
+    ]
+  },
+  {
+    "name": "Dashboard joined to calendar",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla 2-PTA",
+      "query": {
+        "source-table": "cube_financial",
+        "filter": [
+          "and",
+          [
+            "=",
+            [
+              "field",
+              "cube_financial.classroom",
+              null
+            ],
+            "2-PTA"
+          ],
+          [
+            "=",
+            [
+              "field",
+              "cube_financial.game",
+              null
+            ],
+            "Extended-2 2-PTA"
+          ]
+        ],
+        "expressions": {
+          "net_income": [
+            "case",
+            [
+              [
+                [
+                  "or",
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.type",
+                      null
+                    ],
+                    "Expenses"
+                  ],
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.type",
+                      null
+                    ],
+                    "Income"
+                  ]
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "debt": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "2100"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "sales": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "3200"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "cogs": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "4008"
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "equity": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.type",
+                    null
+                  ],
+                  "Equity"
+                ],
+                [
+                  "field",
+                  "cube_financial.amount",
+                  null
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "marketing": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "6600"
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "financial expenses": [
+            "case",
+            [
+              [
+                [
+                  "=",
+                  [
+                    "field",
+                    "cube_financial.account_code",
+                    null
+                  ],
+                  "6900"
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ],
+          "rent and salaries": [
+            "case",
+            [
+              [
+                [
+                  "or",
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.account_code",
+                      null
+                    ],
+                    "6000"
+                  ],
+                  [
+                    "=",
+                    [
+                      "field",
+                      "cube_financial.account_code",
+                      null
+                    ],
+                    "5000"
+                  ]
+                ],
+                [
+                  "*",
+                  [
+                    "field",
+                    "cube_financial.amount",
+                    null
+                  ],
+                  -1
+                ]
+              ]
+            ],
+            {
+              "default": 0
+            }
+          ]
+        },
+        "aggregation": [
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "-",
+                  [
+                    "expression",
+                    "sales"
+                  ],
+                  [
+                    "expression",
+                    "cogs"
+                  ]
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "sales"
+                ]
+              ]
+            ],
+            {
+              "name": "Gross margin (%)",
+              "display-name": "Gross margin (%)"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "expression",
+                  "debt"
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "equity"
+                ]
+              ]
+            ],
+            {
+              "name": "Debt/Equity (%)",
+              "display-name": "Debt/Equity (%)"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "expression",
+                  "marketing"
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "sales"
+                ]
+              ]
+            ],
+            {
+              "name": "Marketing/Sales (%)",
+              "display-name": "Marketing/Sales (%)"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "net_income"
+              ]
+            ],
+            {
+              "name": "Net income",
+              "display-name": "Net income"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "debt"
+              ]
+            ],
+            {
+              "name": "Debt",
+              "display-name": "Debt"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "sales"
+              ]
+            ],
+            {
+              "name": "Sales",
+              "display-name": "Sales"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "cogs"
+              ]
+            ],
+            {
+              "name": "Cogs",
+              "display-name": "Cogs"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "marketing"
+              ]
+            ],
+            {
+              "name": "Marketing",
+              "display-name": "Marketing"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "financial expenses"
+              ]
+            ],
+            {
+              "name": "Financial Expenses",
+              "display-name": "Financial Expenses"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "sum",
+              [
+                "expression",
+                "rent and salaries"
+              ]
+            ],
+            {
+              "name": "Rent & Salaries",
+              "display-name": "Rent & Salaries"
+            }
+          ],
+          [
+            "aggregation-options",
+            [
+              "/",
+              [
+                "sum",
+                [
+                  "expression",
+                  "net_income"
+                ]
+              ],
+              [
+                "sum",
+                [
+                  "expression",
+                  "sales"
+                ]
+              ]
+            ],
+            {
+              "name": "Net margin (%)",
+              "display-name": "Net margin (%)"
+            }
+          ]
+        ],
+        "breakout": [
+          [
+            "field",
+            "cube_financial.company",
+            null
+          ],
+          [
+            "field",
+            "cube_calendar.round",
+            {
+              "join-alias": "Cube Calendar"
+            }
+          ]
+        ],
+        "order-by": [
+          [
+            "desc",
+            [
+              "aggregation",
+              3,
+              null
+            ]
+          ]
+        ],
+        "joins": [
+          {
+            "fields": "none",
+            "source-table": "cube_calendar",
+            "condition": [
+              "and",
+              [
+                "=",
+                [
+                  "field",
+                  "cube_financial.game",
+                  null
+                ],
+                [
+                  "field",
+                  "cube_calendar.game",
+                  {
+                    "join-alias": "Cube Calendar"
+                  }
+                ]
+              ],
+              [
+                "=",
+                [
+                  "field",
+                  "cube_financial.classroom",
+                  null
+                ],
+                [
+                  "field",
+                  "cube_calendar.classroom",
+                  {
+                    "join-alias": "Cube Calendar"
+                  }
+                ]
+              ],
+              [
+                "=",
+                [
+                  "field",
+                  "cube_financial.date",
+                  {
+                    "temporal-unit": "day"
+                  }
+                ],
+                [
+                  "field",
+                  "cube_calendar.date",
+                  {
+                    "join-alias": "Cube Calendar",
+                    "temporal-unit": "day"
+                  }
+                ]
+              ]
+            ],
+            "alias": "Cube Calendar"
+          }
+        ]
+      },
+      "type": "query"
+    },
+    "display": "pivot",
+    "visualization_settings": {
+      "table.pivot": false,
+      "table.columns": [
+        {
+          "name": "company",
+          "fieldRef": [
+            "field",
+            "cube_financial.company",
+            null
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Net income",
+          "fieldRef": [
+            "aggregation",
+            3
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Sales",
+          "fieldRef": [
+            "aggregation",
+            5
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Cogs",
+          "fieldRef": [
+            "aggregation",
+            6
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Gross margin (%)",
+          "fieldRef": [
+            "aggregation",
+            0
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Net margin (%)",
+          "fieldRef": [
+            "aggregation",
+            10
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Marketing/Sales (%)",
+          "fieldRef": [
+            "aggregation",
+            2
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Debt",
+          "fieldRef": [
+            "aggregation",
+            4
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Debt/Equity (%)",
+          "fieldRef": [
+            "aggregation",
+            1
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Marketing",
+          "fieldRef": [
+            "aggregation",
+            7
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Financial Expenses",
+          "fieldRef": [
+            "aggregation",
+            8
+          ],
+          "enabled": true
+        },
+        {
+          "name": "Rent & Salaries",
+          "fieldRef": [
+            "aggregation",
+            9
+          ],
+          "enabled": true
+        },
+        {
+          "name": "round",
+          "field_ref": [
+            "field",
+            "cube_calendar.round",
+            {
+              "join-alias": "Cube Calendar"
+            }
+          ],
+          "enabled": true
+        }
+      ],
+      "table.column_formatting": [
+        {
+          "max_value": 100,
+          "color": "#F7C4C4",
+          "columns": [
+            "Net income"
+          ],
+          "value": 0,
+          "type": "single",
+          "colors": [
+            "#ED6E6E",
+            "#FFFFFF",
+            "#84BB4C"
+          ],
+          "highlight_row": true,
+          "min_value": 0,
+          "min_type": null,
+          "operator": "<",
+          "max_type": null
+        }
+      ],
+      "table.pivot_column": "company",
+      "table.cell_column": "Gross margin (%)",
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            "cube_calendar.round",
+            {
+              "join-alias": "Cube Calendar"
+            }
+          ],
+          [
+            "field",
+            "cube_financial.company",
+            null
+          ]
+        ],
+        "columns": [],
+        "values": [
+          [
+            "aggregation",
+            3
+          ],
+          [
+            "aggregation",
+            5
+          ],
+          [
+            "aggregation",
+            6
+          ],
+          [
+            "aggregation",
+            0
+          ],
+          [
+            "aggregation",
+            10
+          ],
+          [
+            "aggregation",
+            2
+          ],
+          [
+            "aggregation",
+            1
+          ],
+          [
+            "aggregation",
+            4
+          ],
+          [
+            "aggregation",
+            7
+          ],
+          [
+            "aggregation",
+            8
+          ],
+          [
+            "aggregation",
+            9
+          ]
+        ]
+      },
+      "column_settings": {
+        "[\"name\",\"Marketing/Sales (%)\"]": {
+          "number_style": "percent",
+          "decimals": 2,
+          "show_mini_bar": true
+        },
+        "[\"name\",\"Rent & Salaries\"]": {
+          "number_separators": ".’",
+          "decimals": 0
+        },
+        "[\"name\",\"Debt/Equity (%)\"]": {
+          "show_mini_bar": false,
+          "number_style": "percent",
+          "decimals": 2
+        },
+        "[\"name\",\"Marketing\"]": {
+          "number_separators": ".’",
+          "decimals": 0
+        },
+        "[\"name\",\"Financial Expenses\"]": {
+          "number_separators": ".’",
+          "decimals": 0
+        },
+        "[\"name\",\"Net income\"]": {
+          "number_separators": ".’",
+          "show_mini_bar": true,
+          "decimals": 0,
+          "prefix": ""
+        },
+        "[\"name\",\"Sales\"]": {
+          "number_separators": ".’",
+          "decimals": 0,
+          "number_style": "decimal",
+          "currency": "CHF",
+          "currency_style": "code",
+          "show_mini_bar": true
+        },
+        "[\"ref\",[\"field\",1487,null]]": {
+          "pivot_table.column_show_totals": true
+        },
+        "[\"name\",\"Debt\"]": {
+          "number_separators": ".’",
+          "decimals": 0,
+          "show_mini_bar": false
+        },
+        "[\"name\",\"Cogs\"]": {
+          "number_separators": ".’",
+          "decimals": 0,
+          "show_mini_bar": true
+        },
+        "[\"name\",\"Net margin (%)\"]": {
+          "number_style": "percent",
+          "show_mini_bar": true,
+          "decimals": 2
+        },
+        "[\"name\",\"Gross margin (%)\"]": {
+          "show_mini_bar": true,
+          "number_style": "percent",
+          "decimals": 2
+        }
+      }
+    },
+    "parameters": [],
+    "result_metadata": [
+      {
+        "description": null,
+        "semantic_type": null,
+        "coercion_strategy": null,
+        "name": "pivot-grouping",
+        "settings": null,
+        "field_ref": [
+          "expression",
+          "pivot-grouping"
+        ],
+        "effective_type": "type/Text",
+        "id": 770,
+        "visibility_type": "normal",
+        "display_name": "pivot-grouping",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 3.0,
+              "q1": 3.0,
+              "q3": 3.0,
+              "max": 3.0,
+              "sd": null,
+              "avg": 3.0
+            }
+          }
+        },
+        "base_type": "type/Integer"
+      },
+      {
+        "description": null,
+        "semantic_type": "type/GrossMargin",
+        "coercion_strategy": null,
+        "name": "Gross margin (%)",
+        "settings": null,
+        "field_ref": [
+          "aggregation",
+          0
+        ],
+        "effective_type": "type/Decimal",
+        "id": 1487,
+        "visibility_type": "normal",
+        "display_name": "Gross margin (%)",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.2779629890762139,
+              "q1": 0.2779629890762139,
+              "q3": 0.2779629890762139,
+              "max": 0.2779629890762139,
+              "sd": null,
+              "avg": 0.2779629890762139
+            }
+          }
+        },
+        "base_type": "type/Float"
+      },
+      {
+        "display_name": "Debt/Equity (%)",
+        "field_ref": [
+          "aggregation",
+          1
+        ],
+        "name": "Debt/Equity (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Integer",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.0629,
+              "q1": 0.0629,
+              "q3": 0.0629,
+              "max": 0.0629,
+              "sd": null,
+              "avg": 0.0629
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Marketing/Sales (%)",
+        "field_ref": [
+          "aggregation",
+          2
+        ],
+        "name": "Marketing/Sales (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.004326767239812995,
+              "q1": 0.004326767239812995,
+              "q3": 0.004326767239812995,
+              "max": 0.004326767239812995,
+              "sd": null,
+              "avg": 0.004326767239812995
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Net income",
+        "field_ref": [
+          "aggregation",
+          3
+        ],
+        "name": "Net income",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Float",
+        "semantic_type": "type/Income",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 3771323.13,
+              "q1": 3771323.13,
+              "q3": 3771323.13,
+              "max": 3771323.13,
+              "sd": null,
+              "avg": 3771323.13
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Debt",
+        "field_ref": [
+          "aggregation",
+          4
+        ],
+        "name": "Debt",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Float",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 2516000.0,
+              "q1": 2516000.0,
+              "q3": 2516000.0,
+              "max": 2516000.0,
+              "sd": null,
+              "avg": 2516000.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Sales",
+        "semantic_type": null,
+        "field_ref": [
+          "aggregation",
+          5
+        ],
+        "name": "Sales",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 25330690.08,
+              "q1": 25330690.08,
+              "q3": 25330690.08,
+              "max": 25330690.08,
+              "sd": null,
+              "avg": 25330690.08
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Cogs",
+        "semantic_type": null,
+        "field_ref": [
+          "aggregation",
+          6
+        ],
+        "name": "Cogs",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 18289695.75,
+              "q1": 18289695.75,
+              "q3": 18289695.75,
+              "max": 18289695.75,
+              "sd": null,
+              "avg": 18289695.75
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Marketing",
+        "semantic_type": null,
+        "field_ref": [
+          "aggregation",
+          7
+        ],
+        "name": "Marketing",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 109600.0,
+              "q1": 109600.0,
+              "q3": 109600.0,
+              "max": 109600.0,
+              "sd": null,
+              "avg": 109600.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Financial Expenses",
+        "field_ref": [
+          "aggregation",
+          8
+        ],
+        "name": "Financial Expenses",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 280071.2,
+              "q1": 280071.2,
+              "q3": 280071.2,
+              "max": 280071.2,
+              "sd": null,
+              "avg": 280071.2
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Rent & Salaries",
+        "field_ref": [
+          "aggregation",
+          9
+        ],
+        "name": "Rent & Salaries",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 2880000.0,
+              "q1": 2880000.0,
+              "q3": 2880000.0,
+              "max": 2880000.0,
+              "sd": null,
+              "avg": 2880000.0
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Net margin (%)",
+        "field_ref": [
+          "aggregation",
+          10
+        ],
+        "name": "Net margin (%)",
+        "base_type": "type/Float",
+        "effective_type": "type/Decimal",
+        "semantic_type": "type/GrossMargin",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 1,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 0.1488835526426369,
+              "q1": 0.1488835526426369,
+              "q3": 0.1488835526426369,
+              "max": 0.1488835526426369,
+              "sd": null,
+              "avg": 0.1488835526426369
+            }
+          }
+        }
       }
     ]
   },
@@ -3001,7 +5824,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_financial.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -3010,7 +5833,7 @@
             "=",
             [
               "field",
-              "account",
+              "cube_financial.account",
               null
             ],
             "Bank Overdraft (Bank)"
@@ -3019,7 +5842,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_financial.company",
               null
             ],
             "E"
@@ -3028,7 +5851,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_financial.classroom",
               null
             ],
             "2-PTA"
@@ -3039,7 +5862,7 @@
             "cum-sum",
             [
               "field",
-              "amount",
+              "cube_financial.amount",
               null
             ]
           ]
@@ -3047,14 +5870,14 @@
         "breakout": [
           [
             "field",
-            "date",
+            "cube_financial.date",
             {
               "temporal-unit": "day"
             }
           ],
           [
             "field",
-            "company",
+            "cube_financial.company",
             null
           ]
         ]
@@ -3073,7 +5896,7 @@
         "rows": [
           [
             "field",
-            "date",
+            "cube_financial.date",
             {
               "temporal-unit": "day"
             }
@@ -3082,7 +5905,7 @@
         "columns": [
           [
             "field",
-            "company",
+            "cube_financial.company",
             null
           ]
         ],
@@ -3110,7 +5933,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "date",
+          "cube_financial.date",
           {
             "temporal-unit": "day"
           }
@@ -3145,7 +5968,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "company",
+          "cube_financial.company",
           null
         ],
         "effective_type": "type/Text",
@@ -3198,7 +6021,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_financial.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -3207,7 +6030,7 @@
             "=",
             [
               "field",
-              "type",
+              "cube_financial.type",
               null
             ],
             "Income",
@@ -3217,7 +6040,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_financial.company",
               null
             ],
             "A"
@@ -3226,7 +6049,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_financial.classroom",
               null
             ],
             "2-PTA"
@@ -3237,7 +6060,7 @@
             "cum-sum",
             [
               "field",
-              "amount",
+              "cube_financial.amount",
               null
             ]
           ]
@@ -3245,12 +6068,12 @@
         "breakout": [
           [
             "field",
-            "company",
+            "cube_financial.company",
             null
           ],
           [
             "field",
-            "date",
+            "cube_financial.date",
             {
               "temporal-unit": "day"
             }
@@ -3283,7 +6106,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "company",
+          "cube_financial.company",
           null
         ],
         "effective_type": "type/Text",
@@ -3320,7 +6143,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "date",
+          "cube_financial.date",
           {
             "temporal-unit": "day"
           }
@@ -3360,6 +6183,151 @@
     ]
   },
   {
+    "name": "Gross Margin By Product and Date",
+    "description": null,
+    "dataset_query": {
+      "database": "Aroolla 2-PTA",
+      "native": {
+        "query": "SELECT \n  \"sales\".\"date\" AS \"date\",\n  \"sales\".\"product\" AS \"product\",\n  \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"product\" AS \"product\", \n      \"cube_sales\".\"date_invoice\" AS \"date\",\n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }} AND\n    {{ company }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"product\" ,\n      \"cube_sales\".\"date_invoice\"\n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"product\" AS \"product\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      \"cube_inventory\".\"date\",\n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"product\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\",\n      \"cube_inventory\".\"date\"\n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"product\" = \"inventory\".\"product\"\n    AND \"sales\".\"date\" = \"inventory\".\"date\"\n  ) \nGROUP BY \n  \"sales\".\"product\",\n  \"sales\".\"date\"\nORDER BY \n  \"sales\".\"date\" ASC, \n  \"sales\".\"product\" ASC\n",
+        "template-tags": {
+          "classroom": {
+            "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
+            "name": "classroom",
+            "display-name": "Classroom",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.classroom",
+              null
+            ],
+            "widget-type": "string/=",
+            "default": [
+              "2-PTA"
+            ],
+            "required": true
+          },
+          "game": {
+            "id": "555ac0b6-9e04-be0e-045b-44e723483dc7",
+            "name": "game",
+            "display-name": "Game",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.game",
+              null
+            ],
+            "widget-type": "string/=",
+            "default": [
+              "Extended-2 2-PTA"
+            ],
+            "required": true
+          },
+          "company": {
+            "id": "e8cde4e6-8810-0fef-342a-a6c3c0795beb",
+            "name": "company",
+            "display-name": "Company",
+            "type": "dimension",
+            "dimension": [
+              "field",
+              "cube_sales.company",
+              null
+            ],
+            "widget-type": "string/=",
+            "required": true
+          }
+        }
+      },
+      "type": "native"
+    },
+    "display": "line",
+    "visualization_settings": {
+      "pivot_table.column_split": {
+        "rows": [
+          [
+            "field",
+            170,
+            null
+          ]
+        ],
+        "columns": [
+          [
+            "field",
+            167,
+            null
+          ]
+        ],
+        "values": [
+          [
+            "aggregation",
+            0
+          ]
+        ]
+      },
+      "table.pivot": true,
+      "table.pivot_column": "company",
+      "table.cell_column": "Gross margin",
+      "graph.dimensions": [
+        "date",
+        "product"
+      ],
+      "graph.show_values": true,
+      "column_settings": {
+        "[\"name\",\"Gross margin\"]": {}
+      },
+      "graph.metrics": [
+        "Gross margin"
+      ]
+    },
+    "parameters": [
+      {
+        "id": "982d8db0-319f-8e7a-77c7-d534904833a1",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "classroom"
+          ]
+        ],
+        "name": "Classroom",
+        "slug": "classroom",
+        "default": [
+          "2-PTA"
+        ]
+      },
+      {
+        "id": "555ac0b6-9e04-be0e-045b-44e723483dc7",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "game"
+          ]
+        ],
+        "name": "Game",
+        "slug": "game",
+        "default": [
+          "Extended-2 2-PTA"
+        ]
+      },
+      {
+        "id": "e8cde4e6-8810-0fef-342a-a6c3c0795beb",
+        "type": "string/=",
+        "target": [
+          "dimension",
+          [
+            "template-tag",
+            "company"
+          ]
+        ],
+        "name": "Company",
+        "slug": "company"
+      }
+    ],
+    "result_metadata": null
+  },
+  {
     "name": "Marketing Products per Day",
     "description": null,
     "dataset_query": {
@@ -3372,7 +6340,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_marketing_report.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -3381,7 +6349,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_marketing_report.company",
               null
             ],
             "E"
@@ -3390,7 +6358,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_marketing_report.classroom",
               null
             ],
             "2-PTA"
@@ -3401,7 +6369,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_marketing_report.quantity",
               null
             ]
           ]
@@ -3409,14 +6377,14 @@
         "breakout": [
           [
             "field",
-            "start_date",
+            "cube_marketing_report.start_date",
             {
               "temporal-unit": "day"
             }
           ],
           [
             "field",
-            "product",
+            "cube_marketing_report.product",
             null
           ]
         ]
@@ -3448,7 +6416,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "start_date",
+          "cube_marketing_report.start_date",
           {
             "temporal-unit": "day"
           }
@@ -3483,7 +6451,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "product",
+          "cube_marketing_report.product",
           null
         ],
         "effective_type": "type/Text",
@@ -3536,7 +6504,7 @@
             "=",
             [
               "field",
-              "category",
+              "cube_production.category",
               null
             ],
             "Ground Coffee Packs",
@@ -3547,7 +6515,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_production.company",
               null
             ],
             "F"
@@ -3556,7 +6524,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_production.classroom",
               null
             ],
             "2-PTA"
@@ -3565,7 +6533,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_production.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -3576,7 +6544,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_production.quantity",
               null
             ]
           ]
@@ -3584,14 +6552,14 @@
         "breakout": [
           [
             "field",
-            "date_finished",
+            "cube_production.date_finished",
             {
               "temporal-unit": "day"
             }
           ],
           [
             "field",
-            "product",
+            "cube_production.product",
             null
           ]
         ],
@@ -3600,7 +6568,7 @@
             "asc",
             [
               "field",
-              "product",
+              "cube_production.product",
               null
             ]
           ]
@@ -3673,7 +6641,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "date_finished",
+          "cube_production.date_finished",
           {
             "temporal-unit": "day"
           }
@@ -3708,7 +6676,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "product",
+          "cube_production.product",
           null
         ],
         "effective_type": "type/Text",
@@ -3761,7 +6729,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_purchases.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -3770,7 +6738,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_purchases.company",
               null
             ],
             "E"
@@ -3779,7 +6747,7 @@
             "=",
             [
               "field",
-              "category",
+              "cube_purchases.category",
               null
             ],
             "Green Beans"
@@ -3788,7 +6756,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_purchases.classroom",
               null
             ],
             "2-PTA"
@@ -3799,7 +6767,7 @@
             "sum",
             [
               "field",
-              "quantity_ordered",
+              "cube_purchases.quantity_ordered",
               null
             ]
           ]
@@ -3807,12 +6775,12 @@
         "breakout": [
           [
             "field",
-            "supplier",
+            "cube_purchases.supplier",
             null
           ],
           [
             "field",
-            "date_purchase",
+            "cube_purchases.date_purchase",
             {
               "temporal-unit": "day"
             }
@@ -3843,7 +6811,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "supplier",
+          "cube_purchases.supplier",
           null
         ],
         "effective_type": "type/Text",
@@ -3880,7 +6848,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "date_purchase",
+          "cube_purchases.date_purchase",
           {
             "temporal-unit": "day"
           }
@@ -3932,7 +6900,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_purchases.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -3941,7 +6909,7 @@
             "=",
             [
               "field",
-              "invoice_status",
+              "cube_purchases.invoice_status",
               null
             ],
             "invoiced"
@@ -3950,7 +6918,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_purchases.company",
               null
             ],
             "A"
@@ -3959,7 +6927,7 @@
             "=",
             [
               "field",
-              "category",
+              "cube_purchases.category",
               null
             ],
             "Green Beans",
@@ -3969,7 +6937,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_purchases.classroom",
               null
             ],
             "2-PTA"
@@ -3980,7 +6948,7 @@
             "sum",
             [
               "field",
-              "quantity_received",
+              "cube_purchases.quantity_received",
               null
             ]
           ]
@@ -3988,17 +6956,17 @@
         "breakout": [
           [
             "field",
-            "product",
+            "cube_purchases.product",
             null
           ],
           [
             "field",
-            "price_unit",
+            "cube_purchases.price_unit",
             null
           ],
           [
             "field",
-            "supplier",
+            "cube_purchases.supplier",
             null
           ]
         ]
@@ -4015,17 +6983,17 @@
         "rows": [
           [
             "field",
-            "product",
+            "cube_purchases.product",
             null
           ],
           [
             "field",
-            "supplier",
+            "cube_purchases.supplier",
             null
           ],
           [
             "field",
-            "price_unit",
+            "cube_purchases.price_unit",
             null
           ]
         ],
@@ -4059,7 +7027,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "product",
+          "cube_purchases.product",
           null
         ],
         "effective_type": "type/Text",
@@ -4095,7 +7063,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "price_unit",
+          "cube_purchases.price_unit",
           null
         ],
         "effective_type": "type/Decimal",
@@ -4132,7 +7100,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "supplier",
+          "cube_purchases.supplier",
           null
         ],
         "effective_type": "type/Text",
@@ -4184,7 +7152,7 @@
             "sum",
             [
               "field",
-              "quantity",
+              "cube_sales.quantity",
               null
             ]
           ]
@@ -4192,14 +7160,14 @@
         "breakout": [
           [
             "field",
-            "date_due",
+            "cube_sales.date_due",
             {
               "temporal-unit": "day"
             }
           ],
           [
             "field",
-            "product",
+            "cube_sales.product",
             null
           ]
         ],
@@ -4208,7 +7176,7 @@
             "asc",
             [
               "field",
-              "product",
+              "cube_sales.product",
               null
             ]
           ],
@@ -4216,7 +7184,7 @@
             "asc",
             [
               "field",
-              "date_due",
+              "cube_sales.date_due",
               {
                 "temporal-unit": "day"
               }
@@ -4229,7 +7197,7 @@
             "=",
             [
               "field",
-              "game",
+              "cube_sales.game",
               null
             ],
             "Extended-2 2-PTA"
@@ -4238,7 +7206,7 @@
             "=",
             [
               "field",
-              "classroom",
+              "cube_sales.classroom",
               null
             ],
             "2-PTA"
@@ -4247,7 +7215,7 @@
             "=",
             [
               "field",
-              "company",
+              "cube_sales.company",
               null
             ],
             "A"
@@ -4324,7 +7292,7 @@
         "rows": [
           [
             "field",
-            "date_due",
+            "cube_sales.date_due",
             {
               "temporal-unit": "day"
             }
@@ -4333,7 +7301,7 @@
         "columns": [
           [
             "field",
-            "product",
+            "cube_sales.product",
             null
           ]
         ],
@@ -4369,7 +7337,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "date_due",
+          "cube_sales.date_due",
           {
             "temporal-unit": "day"
           }
@@ -4404,7 +7372,7 @@
         "source": "breakout",
         "field_ref": [
           "field",
-          "product",
+          "cube_sales.product",
           null
         ],
         "effective_type": "type/Text",
