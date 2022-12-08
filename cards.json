@@ -19,7 +19,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -35,13 +35,13 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           }
         }
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -95,7 +95,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -111,7 +111,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       }
     ],
@@ -131,7 +131,7 @@
         "semantic_type": "type/Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -160,13 +160,13 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 30,
+            "distinct-count": 37,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-03-01T00:00:00Z",
-              "latest": "2023-03-30T00:00:00Z"
+              "earliest": "2022-10-01T00:00:00Z",
+              "latest": "2022-11-09T00:00:00Z"
             }
           }
         }
@@ -186,17 +186,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 212,
+            "distinct-count": 155,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": -836994.5,
-              "q1": 369138.3072339271,
-              "q3": 1037797.6682946703,
-              "max": 2751988.45,
-              "sd": 530247.5039334367,
-              "avg": 744951.7468949772
+              "min": -312736.93,
+              "q1": 959665.3002294941,
+              "q3": 1536284.8808333334,
+              "max": 2303010.6,
+              "sd": 512972.058516501,
+              "avg": 1222635.77075
             }
           }
         }
@@ -223,7 +223,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -239,13 +239,13 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           }
         }
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -297,7 +297,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -313,7 +313,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       }
     ],
@@ -333,7 +333,7 @@
         "semantic_type": "type/Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -362,13 +362,13 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 9,
+            "distinct-count": 2,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-03-01T00:00:00Z",
-              "latest": "2023-03-22T00:00:00Z"
+              "earliest": "2022-10-01T00:00:00Z",
+              "latest": "2022-11-03T00:00:00Z"
             }
           }
         }
@@ -388,17 +388,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 12,
+            "distinct-count": 2,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 0.0,
-              "q1": 1466.6901905477898,
-              "q3": 510000.0,
-              "max": 1836000.0,
-              "sd": 568576.9370396,
-              "avg": 375333.3333333333
+              "q1": 0.0,
+              "q3": 216000.0,
+              "max": 432000.0,
+              "sd": 176363.2614803888,
+              "avg": 72000.0
             }
           }
         }
@@ -409,7 +409,7 @@
     "name": "ALL Financial Profit Evolution",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "native": {
         "template-tags": {
           "classroom": {
@@ -425,7 +425,7 @@
             "widget-type": "string/=",
             "required": true,
             "default": [
-              "2-PTA"
+              "3-EED"
             ]
           },
           "game": {
@@ -440,7 +440,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           }
@@ -490,7 +490,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -506,7 +506,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       }
     ],
@@ -526,7 +526,7 @@
         "semantic_type": "type/Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -555,13 +555,13 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 28,
+            "distinct-count": 37,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-03-02T00:00:00Z",
-              "latest": "2023-03-29T00:00:00Z"
+              "earliest": "2022-10-01T00:00:00Z",
+              "latest": "2022-11-09T00:00:00Z"
             }
           }
         }
@@ -581,17 +581,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 183,
+            "distinct-count": 137,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": -325589.5,
-              "q1": -50254.5871875,
-              "q3": 348920.05710571643,
-              "max": 2005386.95,
-              "sd": 390162.688363824,
-              "avg": 211367.1124630542
+              "min": -773886.75,
+              "q1": -83482.0974947321,
+              "q3": 339635.94498781714,
+              "max": 1025768.05,
+              "sd": 350784.2081591409,
+              "avg": 115064.92139240507
             }
           }
         }
@@ -617,7 +617,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -633,14 +633,14 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           }
         },
         "query": "SELECT \n  \"sales\".\"date\" AS \"date\",\n  \"sales\".\"company\" AS \"company\", \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"date_invoice\" AS \"date\",\n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"date_invoice\"\n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      \"cube_inventory\".\"date\",\n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\",\n      \"cube_inventory\".\"date\"\n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"date\" = \"inventory\".\"date\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"date\"\nORDER BY \n  \"sales\".\"date\" ASC, \n  \"sales\".\"company\" ASC\n"
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -706,7 +706,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -722,7 +722,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       }
     ],
@@ -742,13 +742,13 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 27,
+            "distinct-count": 33,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-03-04T00:00:00Z",
-              "latest": "2023-03-30T00:00:00Z"
+              "earliest": "2022-10-08T00:00:00Z",
+              "latest": "2022-11-09T00:00:00Z"
             }
           }
         }
@@ -768,7 +768,7 @@
         "semantic_type": "type/Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -797,17 +797,17 @@
         "semantic_type": "type/GrossMargin",
         "fingerprint": {
           "global": {
-            "distinct-count": 151,
+            "distinct-count": 111,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": -9.285714285714286,
-              "q1": 18.17326665309647,
-              "q3": 32.01856861143381,
-              "max": 52.184982225189,
-              "sd": 11.10862008179305,
-              "avg": 25.449662998790966
+              "min": 6.862745098039216,
+              "q1": 19.30001682789306,
+              "q3": 38.15016325284914,
+              "max": 50.0,
+              "sd": 11.49040343062609,
+              "avg": 28.972307866863943
             }
           }
         }
@@ -833,7 +833,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -849,14 +849,14 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           }
         },
         "query": "SELECT d.date, company, \"Gross margin\", \"day\", \"round\"\nFROM (\nSELECT \n  \"sales\".\"date\" AS \"date\",\n  \"sales\".\"company\" AS \"company\",\n  \"sales\".\"game\",\n  \"sales\".\"classroom\",\n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"date_invoice\" AS \"date\",\n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"date_invoice\"\n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      \"cube_inventory\".\"date\",\n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\",\n      \"cube_inventory\".\"date\"\n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"date\" = \"inventory\".\"date\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"date\",\n  \"sales\".\"classroom\",\n  \"sales\".\"game\"\n) d INNER JOIN \"cube_calendar\" ON d.\"date\" = \"cube_calendar\".\"date\"  AND d.\"game\" = \"cube_calendar\".\"game\" AND d.\"classroom\" = \"cube_calendar\".\"classroom\"\nORDER BY \n  \"day\" ASC, \n  \"company\" ASC\n"
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -922,7 +922,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -938,7 +938,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       }
     ],
@@ -958,13 +958,13 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 27,
+            "distinct-count": 33,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-03-04T00:00:00Z",
-              "latest": "2023-03-30T00:00:00Z"
+              "earliest": "2022-10-08T00:00:00Z",
+              "latest": "2022-11-09T00:00:00Z"
             }
           }
         }
@@ -984,7 +984,7 @@
         "semantic_type": "type/Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -1013,17 +1013,17 @@
         "semantic_type": "type/GrossMargin",
         "fingerprint": {
           "global": {
-            "distinct-count": 151,
+            "distinct-count": 111,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": -9.285714285714286,
-              "q1": 18.17326665309647,
-              "q3": 32.01856861143381,
-              "max": 52.184982225189,
-              "sd": 11.10862008179305,
-              "avg": 25.449662998790966
+              "min": 6.862745098039216,
+              "q1": 19.30001682789306,
+              "q3": 38.15016325284914,
+              "max": 50.0,
+              "sd": 11.49040343062609,
+              "avg": 28.972307866863943
             }
           }
         }
@@ -1043,17 +1043,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 27,
+            "distinct-count": 33,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 4.0,
-              "q1": 11.464101615137753,
-              "q3": 23.833333333333332,
-              "max": 30.0,
-              "sd": 7.431952835962755,
-              "avg": 17.60625
+              "min": 5.0,
+              "q1": 11.743416490252569,
+              "q3": 29.937003937005905,
+              "max": 37.0,
+              "sd": 9.982131102617211,
+              "avg": 20.82905982905983
             }
           }
         }
@@ -1073,17 +1073,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 3,
+            "distinct-count": 4,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 1.0,
-              "q1": 1.5366889059209572,
-              "q3": 2.8241308447305222,
-              "max": 3.0,
-              "sd": 0.7485573126451076,
-              "avg": 2.15625
+              "q1": 1.648629879831606,
+              "q3": 3.4551488748198276,
+              "max": 4.0,
+              "sd": 1.0626554774335013,
+              "avg": 2.547008547008547
             }
           }
         }
@@ -1109,7 +1109,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -1125,14 +1125,14 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           }
         },
         "query": "SELECT \n  \"sales\".\"company\" AS \"company\", \n  \"sales\".\"product\" AS \"product\", \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"product\" AS \"product\", \n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"product\" \n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"product\" AS \"product\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"product\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\" \n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"product\" = \"inventory\".\"product\"\n  ) \nGROUP BY \n  \"sales\".\"company\", \n  \"sales\".\"product\" \nORDER BY \n  \"sales\".\"company\" ASC, \n  \"sales\".\"product\" ASC\n"
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "table",
     "visualization_settings": {
@@ -1161,6 +1161,27 @@
       "table.pivot": true,
       "table.pivot_column": "company",
       "table.cell_column": "Gross margin",
+      "table.column_formatting": [
+        {
+          "max_value": 100,
+          "color": "#509EE3",
+          "columns": [
+            "Gross margin"
+          ],
+          "value": "",
+          "type": "range",
+          "colors": [
+            "#ED6E6E",
+            "#FFFFFF",
+            "#84BB4C"
+          ],
+          "highlight_row": false,
+          "min_value": 0,
+          "min_type": null,
+          "operator": "=",
+          "max_type": null
+        }
+      ],
       "column_settings": {
         "[\"name\",\"Gross margin\"]": {}
       }
@@ -1179,7 +1200,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -1195,7 +1216,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       }
     ],
@@ -1215,16 +1236,16 @@
         "semantic_type": "type/Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
-            "nil%": 0.0
+            "distinct-count": 5,
+            "nil%": 0
           },
           "type": {
             "type/Text": {
-              "percent-json": 0.0,
-              "percent-url": 0.0,
-              "percent-email": 0.0,
-              "percent-state": 0.0,
-              "average-length": 1.0
+              "percent-json": 0,
+              "percent-url": 0,
+              "percent-email": 0,
+              "percent-state": 0,
+              "average-length": 1
             }
           }
         }
@@ -1245,15 +1266,15 @@
         "fingerprint": {
           "global": {
             "distinct-count": 12,
-            "nil%": 0.0
+            "nil%": 0
           },
           "type": {
             "type/Text": {
-              "percent-json": 0.0,
-              "percent-url": 0.0,
-              "percent-email": 0.0,
-              "percent-state": 0.0,
-              "average-length": 25.104477611940297
+              "percent-json": 0,
+              "percent-url": 0,
+              "percent-email": 0,
+              "percent-state": 0,
+              "average-length": 25.895833333333332
             }
           }
         }
@@ -1273,17 +1294,17 @@
         "semantic_type": "type/GrossMargin",
         "fingerprint": {
           "global": {
-            "distinct-count": 67,
-            "nil%": 0.0
+            "distinct-count": 48,
+            "nil%": 0
           },
           "type": {
             "type/Number": {
-              "min": -2.224124733819683,
-              "q1": 16.3031769481213,
-              "q3": 28.81948279398539,
-              "max": 45.55049063417415,
-              "sd": 9.316039381787816,
-              "avg": 21.276260626423106
+              "min": 5.830753353973169,
+              "q1": 14.818452542084717,
+              "q3": 30.530921742638842,
+              "max": 43.03244693827763,
+              "sd": 10.35283862014061,
+              "avg": 23.20928391813438
             }
           }
         }
@@ -1310,7 +1331,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -1326,7 +1347,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           },
@@ -1345,7 +1366,7 @@
           }
         }
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -1373,7 +1394,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -1389,7 +1410,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       },
       {
@@ -1431,7 +1452,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.097560975609756
+              "average-length": 26.289752650176677
             }
           }
         }
@@ -1451,13 +1472,13 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 10,
+            "distinct-count": 34,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-03-03T00:00:00Z",
-              "latest": "2023-03-12T00:00:00Z"
+              "earliest": "2022-10-07T00:00:00Z",
+              "latest": "2022-11-09T00:00:00Z"
             }
           }
         }
@@ -1477,17 +1498,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 52,
+            "distinct-count": 178,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 0.0,
-              "q1": 1800.0,
-              "q3": 6300.0,
-              "max": 12423.0,
-              "sd": 3003.891664547784,
-              "avg": 4215.59756097561
+              "q1": 1907.2195209901026,
+              "q3": 4842.07640017421,
+              "max": 16498.0,
+              "sd": 3411.5072645915175,
+              "avg": 3938.5795053003535
             }
           }
         }
@@ -1510,7 +1531,7 @@
               "cube_market_report.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -1519,7 +1540,7 @@
               "cube_market_report.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -1547,7 +1568,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -1576,7 +1597,7 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 916,
+        "id": 2410,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -1590,7 +1611,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.933333333333334
+              "average-length": 25.99099099099099
             }
           }
         },
@@ -1611,18 +1632,18 @@
           }
         ],
         "effective_type": "type/Date",
-        "id": 912,
+        "id": 2408,
         "visibility_type": "normal",
         "display_name": "Date",
         "fingerprint": {
           "global": {
-            "distinct-count": 7,
+            "distinct-count": 11,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-12",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-10",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -1641,17 +1662,17 @@
         "effective_type": "type/Float",
         "fingerprint": {
           "global": {
-            "distinct-count": 52,
+            "distinct-count": 62,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 38.75999999999999,
-              "q1": 44.446384169084126,
-              "q3": 72.85481080166876,
-              "max": 82.4684616832988,
-              "sd": 14.528162240632128,
-              "avg": 57.35161916231437
+              "min": 38.76,
+              "q1": 47.61913793103447,
+              "q3": 84.76555857795914,
+              "max": 99.45624999999997,
+              "sd": 19.342688881380994,
+              "avg": 63.94202792674103
             }
           }
         }
@@ -1662,7 +1683,7 @@
     "name": "ALL Market Quantity by Date",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_market_report",
         "filter": [
@@ -1674,7 +1695,7 @@
               "cube_market_report.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -1683,7 +1704,7 @@
               "cube_market_report.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -1740,7 +1761,7 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 916,
+        "id": 2410,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -1754,7 +1775,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.933333333333334
+              "average-length": 25.99099099099099
             }
           }
         },
@@ -1775,18 +1796,18 @@
           }
         ],
         "effective_type": "type/Date",
-        "id": 912,
+        "id": 2408,
         "visibility_type": "normal",
         "display_name": "Date",
         "fingerprint": {
           "global": {
-            "distinct-count": 7,
+            "distinct-count": 11,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-12",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-10",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -1805,17 +1826,17 @@
         "effective_type": "type/Float",
         "fingerprint": {
           "global": {
-            "distinct-count": 10,
+            "distinct-count": 54,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 6000.0,
-              "q1": 8750.155281000756,
-              "q3": 118044.0,
-              "max": 186612.0,
-              "sd": 61605.08401811592,
-              "avg": 65841.42857142857
+              "q1": 23625.0,
+              "q3": 60348.0,
+              "max": 180000.0,
+              "sd": 33576.65304871771,
+              "avg": 47406.95652173913
             }
           }
         }
@@ -1838,7 +1859,7 @@
               "cube_marketing_report.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -1847,7 +1868,7 @@
               "cube_marketing_report.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -1885,7 +1906,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "bar",
     "visualization_settings": {
@@ -1916,18 +1937,18 @@
           }
         ],
         "effective_type": "type/Date",
-        "id": 744,
+        "id": 2246,
         "visibility_type": "normal",
         "display_name": "Start Date",
         "fingerprint": {
           "global": {
-            "distinct-count": 27,
+            "distinct-count": 32,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-09",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-05",
+              "latest": "2022-12-14"
             }
           }
         },
@@ -1945,12 +1966,12 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 743,
+        "id": 2245,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -1978,17 +1999,17 @@
         "effective_type": "type/Float",
         "fingerprint": {
           "global": {
-            "distinct-count": 12,
+            "distinct-count": 18,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 1.0,
-              "q1": 1.106980529541524,
-              "q3": 5.83772233983162,
-              "max": 65.0,
-              "sd": 12.765282567353934,
-              "avg": 7.560975609756097
+              "min": 3.0,
+              "q1": 45.0,
+              "q3": 933.8165494695127,
+              "max": 1500.0,
+              "sd": 476.5214096409036,
+              "avg": 424.5769230769231
             }
           }
         }
@@ -1999,7 +2020,7 @@
     "name": "ALL Production Quantity Produced by Day",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_production",
         "filter": [
@@ -2022,7 +2043,7 @@
               "cube_production.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -2031,7 +2052,7 @@
               "cube_production.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -2056,6 +2077,18 @@
             {
               "temporal-unit": "day"
             }
+          ]
+        ],
+        "order-by": [
+          [
+            "asc",
+            [
+              "field",
+              "cube_production.date_finished",
+              {
+                "temporal-unit": "day"
+              }
+            ]
           ]
         ]
       },
@@ -2087,23 +2120,44 @@
           ]
         ]
       },
-      "graph.dimensions": [
-        "date_finished",
-        "company"
-      ],
-      "stackable.stack_type": "stacked",
-      "stackable.stack_display": "bar",
-      "table.pivot_column": "company",
       "table.cell_column": "sum",
+      "stackable.stack_display": "bar",
+      "graph.metrics": [
+        "sum"
+      ],
+      "table.column_formatting": [
+        {
+          "max_value": 100,
+          "color": "#509EE3",
+          "columns": [
+            "sum"
+          ],
+          "value": "",
+          "type": "range",
+          "colors": [
+            "#ED6E6E",
+            "#F9CF48",
+            "#84BB4C"
+          ],
+          "highlight_row": false,
+          "min_value": 0,
+          "min_type": null,
+          "operator": "=",
+          "max_type": null
+        }
+      ],
+      "table.pivot_column": "company",
       "column_settings": {
         "[\"ref\",[\"field\",202,null]]": {
           "pivot_table.column_sort_order": "ascending",
           "date_abbreviate": true
         }
       },
-      "graph.metrics": [
-        "sum"
-      ]
+      "graph.dimensions": [
+        "date_finished",
+        "company"
+      ],
+      "stackable.stack_type": "stacked"
     },
     "parameters": [],
     "result_metadata": [
@@ -2119,12 +2173,12 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 968,
+        "id": 2450,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -2154,18 +2208,18 @@
           }
         ],
         "effective_type": "type/Date",
-        "id": 956,
+        "id": 2445,
         "visibility_type": "normal",
         "display_name": "Date Finished",
         "fingerprint": {
           "global": {
-            "distinct-count": 32,
+            "distinct-count": 50,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-12",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-07",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -2184,17 +2238,17 @@
         "effective_type": "type/Decimal",
         "fingerprint": {
           "global": {
-            "distinct-count": 7,
+            "distinct-count": 8,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 900.0,
-              "q1": 2691.3900656421315,
+              "min": 1000.0,
+              "q1": 2837.2044507646924,
               "q3": 3000.0,
               "max": 3000.0,
-              "sd": 486.28193635870116,
-              "avg": 2837.0967741935483
+              "sd": 617.5076975207686,
+              "avg": 2721.560975609756
             }
           }
         }
@@ -2217,7 +2271,7 @@
               "cube_purchases.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -2245,7 +2299,7 @@
               "cube_purchases.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -2271,7 +2325,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "bar",
     "visualization_settings": {
@@ -2337,7 +2391,7 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 829,
+        "id": 2325,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -2351,7 +2405,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 16.991163475699558
+              "average-length": 17.46794871794872
             }
           }
         },
@@ -2369,12 +2423,12 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 837,
+        "id": 2333,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -2402,17 +2456,17 @@
         "effective_type": "type/Decimal",
         "fingerprint": {
           "global": {
-            "distinct-count": 35,
+            "distinct-count": 24,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 0.026,
-              "q1": 0.2625,
-              "q3": 6.630208333333334,
-              "max": 8.166666666666666,
-              "sd": 3.4336774501646627,
-              "avg": 3.28498274333691
+              "min": 0.037,
+              "q1": 0.36250000000000004,
+              "q3": 6.656417112299465,
+              "max": 8.0,
+              "sd": 3.388454518691255,
+              "avg": 3.0390734531155124
             }
           }
         }
@@ -2423,7 +2477,7 @@
     "name": "ALL Purchases Orders Count by Supplier",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_purchases",
         "filter": [
@@ -2435,7 +2489,7 @@
               "cube_purchases.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -2463,7 +2517,7 @@
               "cube_purchases.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -2510,12 +2564,12 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 837,
+        "id": 2333,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -2542,7 +2596,7 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 840,
+        "id": 2336,
         "visibility_type": "normal",
         "display_name": "Supplier",
         "fingerprint": {
@@ -2556,7 +2610,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 18.721649484536083
+              "average-length": 18.84775641025641
             }
           }
         },
@@ -2574,17 +2628,17 @@
         "effective_type": "type/BigInteger",
         "fingerprint": {
           "global": {
-            "distinct-count": 13,
+            "distinct-count": 11,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 2.0,
-              "q1": 8.0,
-              "q3": 23.0,
-              "max": 27.0,
-              "sd": 8.152949664709952,
-              "avg": 15.666666666666666
+              "min": 1.0,
+              "q1": 4.0,
+              "q3": 31.660254037844386,
+              "max": 39.0,
+              "sd": 13.998430053261114,
+              "avg": 17.428571428571427
             }
           }
         }
@@ -2636,7 +2690,7 @@
               "cube_sales.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -2645,7 +2699,7 @@
               "cube_sales.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "order-by": [
@@ -2659,7 +2713,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -2686,7 +2740,7 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 796,
+        "id": 2298,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -2700,7 +2754,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.818832391713748
+              "average-length": 26.861474624960103
             }
           }
         },
@@ -2718,7 +2772,7 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 795,
+        "id": 2297,
         "visibility_type": "normal",
         "display_name": "Category",
         "fingerprint": {
@@ -2732,7 +2786,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 17.24783427495292
+              "average-length": 15.342164060006384
             }
           }
         },
@@ -2753,18 +2807,18 @@
           }
         ],
         "effective_type": "type/Date",
-        "id": 790,
+        "id": 2292,
         "visibility_type": "normal",
         "display_name": "Date Invoice",
         "fingerprint": {
           "global": {
-            "distinct-count": 34,
+            "distinct-count": 53,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-08",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-08",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -2783,17 +2837,17 @@
         "effective_type": "type/Decimal",
         "fingerprint": {
           "global": {
-            "distinct-count": 135,
+            "distinct-count": 109,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 38.76,
-              "q1": 45.089930555555554,
-              "q3": 76.29874081944752,
-              "max": 85.0,
-              "sd": 15.492402726133854,
-              "avg": 61.40561481754372
+              "q1": 50.64747128961422,
+              "q3": 88.91135328184384,
+              "max": 104.9,
+              "sd": 19.527733079054713,
+              "avg": 69.24155464460522
             }
           }
         }
@@ -2804,7 +2858,7 @@
     "name": "ALL Sales Distinct Customers Count by Product",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_sales",
         "expressions": {
@@ -2885,7 +2939,7 @@
               "cube_sales.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -2894,7 +2948,7 @@
               "cube_sales.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "order-by": [
@@ -2924,44 +2978,33 @@
     "parameters": [],
     "result_metadata": [
       {
+        "base_type": "type/Text",
+        "name": "Segment",
         "display_name": "Segment",
+        "expression_name": "Segment",
         "field_ref": [
           "expression",
           "Segment"
         ],
-        "name": "Segment",
-        "base_type": "type/Text",
-        "effective_type": "type/Text",
-        "semantic_type": null,
-        "fingerprint": {
-          "global": {
-            "distinct-count": 3,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Text": {
-              "percent-json": 0.0,
-              "percent-url": 0.0,
-              "percent-email": 0.0,
-              "percent-state": 0.0,
-              "average-length": 9.764705882352942
-            }
-          }
-        }
+        "source": "breakout"
       },
       {
         "description": null,
         "semantic_type": "type/Category",
+        "table_id": 232,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
+        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.product",
           null
         ],
         "effective_type": "type/Text",
-        "id": 796,
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 2298,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -2975,7 +3018,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.818832391713748
+              "average-length": 26.861474624960103
             }
           }
         },
@@ -2984,16 +3027,20 @@
       {
         "description": null,
         "semantic_type": "type/Category",
+        "table_id": 232,
         "coercion_strategy": null,
         "name": "category",
         "settings": null,
+        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.category",
           null
         ],
         "effective_type": "type/Text",
-        "id": 795,
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 2297,
         "visibility_type": "normal",
         "display_name": "Category",
         "fingerprint": {
@@ -3007,39 +3054,23 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 17.24783427495292
+              "average-length": 15.342164060006384
             }
           }
         },
         "base_type": "type/Text"
       },
       {
-        "display_name": "Valeurs distinctes de Customer",
+        "base_type": "type/BigInteger",
         "semantic_type": "type/Quantity",
         "settings": null,
+        "name": "count",
+        "display_name": "Valeurs distinctes de Customer",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           0
-        ],
-        "name": "count",
-        "base_type": "type/BigInteger",
-        "effective_type": "type/BigInteger",
-        "fingerprint": {
-          "global": {
-            "distinct-count": 7,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 1.0,
-              "q1": 2.26253140723345,
-              "q3": 9.774754878398197,
-              "max": 10.0,
-              "sd": 3.929526239966879,
-              "avg": 6.235294117647059
-            }
-          }
-        }
+        ]
       }
     ]
   },
@@ -3098,7 +3129,7 @@
               "cube_sales.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -3107,7 +3138,7 @@
               "cube_sales.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "order-by": [
@@ -3121,7 +3152,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "scatter",
     "visualization_settings": {
@@ -3143,20 +3174,16 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 81,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.product",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 796,
+        "id": 2298,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -3170,7 +3197,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.818832391713748
+              "average-length": 26.861474624960103
             }
           }
         },
@@ -3179,20 +3206,16 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 81,
         "coercion_strategy": null,
         "name": "category",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.category",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 795,
+        "id": 2297,
         "visibility_type": "normal",
         "display_name": "Category",
         "fingerprint": {
@@ -3206,7 +3229,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 17.24783427495292
+              "average-length": 15.342164060006384
             }
           }
         },
@@ -3215,78 +3238,99 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 81,
         "coercion_strategy": null,
-        "binning_info": {
-          "min_value": 37.5,
-          "max_value": 97.5,
-          "num_bins": 8,
-          "bin_width": 7.5,
-          "binning_strategy": "num-bins"
-        },
         "name": "price_unit",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.price_unit",
           {
             "binning": {
               "strategy": "num-bins",
-              "min-value": 37.5,
-              "max-value": 97.5,
+              "min-value": 30.0,
+              "max-value": 110.0,
               "num-bins": 8,
-              "bin-width": 7.5
+              "bin-width": 10
             }
           }
         ],
         "effective_type": "type/Decimal",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 785,
+        "id": 2287,
         "visibility_type": "normal",
         "display_name": "Price Unit",
         "fingerprint": {
           "global": {
-            "distinct-count": 121,
+            "distinct-count": 130,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 37.9,
-              "q1": 44.33118011064498,
-              "q3": 70.1578584010492,
-              "max": 97.5,
-              "sd": 13.07533867297855,
-              "avg": 55.22549905838042
+              "min": 38.76,
+              "q1": 53.45372255993617,
+              "q3": 89.7976658481929,
+              "max": 105.0,
+              "sd": 19.108102541205987,
+              "avg": 70.0451835301628
             }
           }
         },
         "base_type": "type/Decimal"
       },
       {
-        "base_type": "type/Decimal",
+        "display_name": "Moyenne de Price Unit",
         "semantic_type": null,
         "settings": null,
-        "name": "avg",
-        "display_name": "Moyenne de Price Unit",
-        "source": "aggregation",
         "field_ref": [
           "aggregation",
           0
-        ]
+        ],
+        "name": "avg",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 26,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 38.76,
+              "q1": 48.6,
+              "q3": 86.3982105263158,
+              "max": 104.59565217391304,
+              "sd": 19.27579535044731,
+              "avg": 68.33283029049942
+            }
+          }
+        }
       },
       {
-        "base_type": "type/Decimal",
+        "display_name": "Somme de Quantity",
         "semantic_type": null,
         "settings": null,
-        "name": "sum",
-        "display_name": "Somme de Quantity",
-        "source": "aggregation",
         "field_ref": [
           "aggregation",
           1
-        ]
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 25,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1000.0,
+              "q1": 4133.0,
+              "q3": 16000.0,
+              "max": 35002.0,
+              "sd": 7931.146400402365,
+              "avg": 10484.23076923077
+            }
+          }
+        }
       }
     ]
   },
@@ -3294,7 +3338,7 @@
     "name": "ALL Sales Revenues Per Customer Segments",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_sales",
         "expressions": {
@@ -3375,7 +3419,7 @@
               "cube_sales.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -3384,7 +3428,7 @@
               "cube_sales.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ]
       },
@@ -3461,7 +3505,7 @@
           0
         ],
         "effective_type": "type/Text",
-        "id": 795,
+        "id": 2297,
         "visibility_type": "normal",
         "display_name": "Somme de Price Total",
         "fingerprint": {
@@ -3471,12 +3515,12 @@
           },
           "type": {
             "type/Number": {
-              "min": 25330690.08,
-              "q1": 25330690.08,
-              "q3": 25330690.08,
-              "max": 25330690.08,
+              "min": 18089515.44,
+              "q1": 18089515.44,
+              "q3": 18089515.44,
+              "max": 18089515.44,
               "sd": null,
-              "avg": 25330690.08
+              "avg": 18089515.44
             }
           }
         },
@@ -3500,7 +3544,7 @@
               "cube_sales.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -3509,7 +3553,7 @@
               "cube_sales.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -3557,7 +3601,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "bar",
     "visualization_settings": {
@@ -3576,12 +3620,10 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 81,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date_invoice",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.date_invoice",
@@ -3590,20 +3632,18 @@
           }
         ],
         "effective_type": "type/Date",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 790,
+        "id": 2292,
         "visibility_type": "normal",
         "display_name": "Date Invoice",
         "fingerprint": {
           "global": {
-            "distinct-count": 34,
+            "distinct-count": 53,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-08",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-08",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -3612,25 +3652,21 @@
       {
         "description": null,
         "semantic_type": "type/Company",
-        "table_id": 81,
         "coercion_strategy": null,
         "name": "company",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_sales.company",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 793,
+        "id": 2295,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -3646,16 +3682,32 @@
         "base_type": "type/Text"
       },
       {
-        "base_type": "type/Decimal",
+        "display_name": "Somme de Price Total",
         "semantic_type": null,
         "settings": null,
-        "name": "sum",
-        "display_name": "Somme de Price Total",
-        "source": "aggregation",
         "field_ref": [
           "aggregation",
           0
-        ]
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 111,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 1527.75,
+              "q1": 74000.74950426482,
+              "q3": 207796.6064025381,
+              "max": 564180.21,
+              "sd": 110113.02559961792,
+              "avg": 154611.24307692307
+            }
+          }
+        }
       }
     ]
   },
@@ -3675,7 +3727,7 @@
               "cube_financial.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ],
           [
             "=",
@@ -3684,7 +3736,7 @@
               "cube_financial.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ]
         ],
         "expressions": {
@@ -4184,7 +4236,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "table",
     "visualization_settings": {
@@ -4398,12 +4450,12 @@
           null
         ],
         "effective_type": "type/Text",
-        "id": 770,
+        "id": 2272,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -4430,17 +4482,17 @@
         "semantic_type": "type/GrossMargin",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 0.1476950399781832,
-              "q1": 0.19176339601040218,
-              "q3": 0.284892273682263,
-              "max": 0.4153440818395299,
-              "sd": 0.08374986651458852,
-              "avg": 0.24929683868493552
+              "min": 0.15225833751226783,
+              "q1": 0.21692131592265518,
+              "q3": 0.3437369771286182,
+              "max": 0.35805503333159977,
+              "sd": 0.08323233761119052,
+              "avg": 0.2761743022707877
             }
           }
         }
@@ -4457,17 +4509,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 4,
+            "distinct-count": 2,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 0.0,
               "q1": 0.0,
-              "q3": 0.068,
-              "max": 0.3672,
-              "sd": 0.1274265278503656,
-              "avg": 0.06290000000000001
+              "q3": 0.03971501088211884,
+              "max": 0.072,
+              "sd": 0.03219937887599697,
+              "avg": 0.0144
             }
           }
         }
@@ -4484,17 +4536,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 0.0005307670510518509,
-              "q1": 0.0012090878298069135,
-              "q3": 0.0060183573358009385,
-              "max": 0.006579488944269628,
-              "sd": 0.0025994924474442324,
-              "avg": 0.0035710209072699227
+              "min": 0.00152869251877812,
+              "q1": 0.0033295156631359167,
+              "q3": 0.1600241233205387,
+              "max": 0.35462842601616107,
+              "sd": 0.1506647554215831,
+              "avg": 0.0940911531792931
             }
           }
         }
@@ -4511,17 +4563,17 @@
         "effective_type": "type/Decimal",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": -133238.97,
-              "q1": 35681.75,
-              "q3": 648458.1,
-              "max": 2013933.45,
-              "sd": 694206.9652636675,
-              "avg": 471415.39125
+              "min": -773886.75,
+              "q1": 28447.965000000084,
+              "q3": 929726.6499999999,
+              "max": 1009702.75,
+              "sd": 711076.0680665906,
+              "avg": 386692.572
             }
           }
         }
@@ -4538,17 +4590,17 @@
         "effective_type": "type/Decimal",
         "fingerprint": {
           "global": {
-            "distinct-count": 4,
+            "distinct-count": 2,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 0.0,
               "q1": 0.0,
-              "q3": 340000.0,
-              "max": 1836000.0,
-              "sd": 637132.639251828,
-              "avg": 314500.0
+              "q3": 238290.06529271306,
+              "max": 432000.0,
+              "sd": 193196.27325598183,
+              "avg": 86400.0
             }
           }
         }
@@ -4565,17 +4617,17 @@
         "effective_type": "type/Decimal",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 1713187.65,
-              "q1": 2349702.8,
-              "q3": 3678975.25,
-              "max": 5927512.05,
-              "sd": 1336783.905352046,
-              "avg": 3166336.26
+              "min": 1452224.25,
+              "q1": 2844104.64,
+              "q3": 4766241.7125,
+              "max": 5260833.6,
+              "sd": 1455624.8559205306,
+              "avg": 3617903.0879999995
             }
           }
         }
@@ -4592,17 +4644,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 1432918.5,
-              "q1": 1823851.0,
-              "q3": 2682707.5,
-              "max": 3465555.0,
-              "sd": 661189.8071631717,
-              "avg": 2286211.96875
+              "min": 1231111.0,
+              "q1": 2145855.1225,
+              "q3": 3125547.6625,
+              "max": 3377165.65,
+              "sd": 817439.1360156725,
+              "avg": 2523978.676
             }
           }
         }
@@ -4619,17 +4671,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 1200.0,
-              "q1": 2750.0,
-              "q3": 21850.0,
-              "max": 39000.0,
-              "sd": 13594.641801617492,
-              "avg": 13700.0
+              "min": 5300.0,
+              "q1": 11075.0,
+              "q3": 504200.0,
+              "max": 515000.0,
+              "sd": 263250.5498569756,
+              "avg": 220780.0
             }
           }
         }
@@ -4646,17 +4698,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 6,
+            "distinct-count": 2,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 0.0,
-              "q1": 1434.6363404506205,
-              "q3": 57577.399999999994,
-              "max": 140428.0,
-              "sd": 49318.040463795514,
-              "avg": 35008.899999999994
+              "q1": 0.0,
+              "q3": 17794.089986784,
+              "max": 32259.2,
+              "sd": 14426.752819952244,
+              "avg": 6451.84
             }
           }
         }
@@ -4678,12 +4730,12 @@
           },
           "type": {
             "type/Number": {
-              "min": 360000.0,
-              "q1": 360000.0,
-              "q3": 360000.0,
-              "max": 360000.0,
+              "min": 480000.0,
+              "q1": 480000.0,
+              "q3": 480000.0,
+              "max": 480000.0,
               "sd": 0.0,
-              "avg": 360000.0
+              "avg": 480000.0
             }
           }
         }
@@ -4700,17 +4752,17 @@
         "semantic_type": "type/GrossMargin",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": -0.05307259225226257,
-              "q1": 0.009823432350276058,
-              "q3": 0.17534442982471204,
-              "max": 0.3397603299684562,
-              "sd": 0.12928286300158903,
-              "avg": 0.10459656789892101
+              "min": -0.5328975535286647,
+              "q1": -0.0661399544519321,
+              "q3": 0.18360275697620732,
+              "max": 0.21943487469595382,
+              "sd": 0.3116946535244267,
+              "avg": 0.0182958474665303
             }
           }
         }
@@ -4727,17 +4779,17 @@
         "semantic_type": null,
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 100028.85,
-              "q1": 561437.4,
-              "q3": 1277220.6400000001,
-              "max": 2751988.45,
-              "sd": 812961.8669476608,
-              "avg": 1036072.36
+              "min": 23170.75,
+              "q1": 597119.59,
+              "q3": 1795273.4625,
+              "max": 2303010.6,
+              "sd": 865414.1442573067,
+              "avg": 1232173.568
             }
           }
         }
@@ -4748,7 +4800,7 @@
     "name": "Dashboard joined to calendar",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_financial",
         "filter": [
@@ -4760,7 +4812,7 @@
               "cube_financial.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ],
           [
             "=",
@@ -4769,7 +4821,7 @@
               "cube_financial.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ]
         ],
         "expressions": {
@@ -5246,13 +5298,7 @@
                   "cube_financial.game",
                   null
                 ],
-                [
-                  "field",
-                  "cube_calendar.game",
-                  {
-                    "join-alias": "Cube Calendar"
-                  }
-                ]
+                "Extended"
               ],
               [
                 "=",
@@ -5261,13 +5307,7 @@
                   "cube_financial.classroom",
                   null
                 ],
-                [
-                  "field",
-                  "cube_calendar.classroom",
-                  {
-                    "join-alias": "Cube Calendar"
-                  }
-                ]
+                "3-EED"
               ],
               [
                 "=",
@@ -5559,337 +5599,192 @@
     "result_metadata": [
       {
         "description": null,
-        "semantic_type": null,
+        "semantic_type": "type/Company",
+        "table_id": 231,
         "coercion_strategy": null,
-        "name": "pivot-grouping",
+        "name": "company",
         "settings": null,
+        "source": "breakout",
         "field_ref": [
-          "expression",
-          "pivot-grouping"
+          "field",
+          "cube_financial.company",
+          null
         ],
         "effective_type": "type/Text",
-        "id": 770,
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 2272,
         "visibility_type": "normal",
-        "display_name": "pivot-grouping",
+        "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 1,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
-            "type/Number": {
-              "min": 3.0,
-              "q1": 3.0,
-              "q3": 3.0,
-              "max": 3.0,
-              "sd": null,
-              "avg": 3.0
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 1.0
             }
           }
         },
-        "base_type": "type/Integer"
+        "base_type": "type/Text"
       },
       {
         "description": null,
-        "semantic_type": "type/GrossMargin",
+        "semantic_type": null,
+        "table_id": 234,
         "coercion_strategy": null,
-        "name": "Gross margin (%)",
+        "name": "round",
         "settings": null,
+        "source": "breakout",
         "field_ref": [
-          "aggregation",
-          0
+          "field",
+          "cube_calendar.round",
+          {
+            "join-alias": "Cube Calendar"
+          }
         ],
         "effective_type": "type/Decimal",
-        "id": 1487,
+        "nfc_path": null,
+        "parent_id": null,
+        "id": 2365,
         "visibility_type": "normal",
-        "display_name": "Gross margin (%)",
+        "display_name": "Cube Calendar → Round",
         "fingerprint": {
           "global": {
-            "distinct-count": 1,
+            "distinct-count": 4,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
-              "min": 0.2779629890762139,
-              "q1": 0.2779629890762139,
-              "q3": 0.2779629890762139,
-              "max": 0.2779629890762139,
-              "sd": null,
-              "avg": 0.2779629890762139
+              "min": 1.0,
+              "q1": 1.2125,
+              "q3": 2.7958405421207706,
+              "max": 4.0,
+              "sd": 1.0152348272128793,
+              "avg": 2.0701754385964914
             }
           }
         },
-        "base_type": "type/Float"
+        "base_type": "type/Decimal",
+        "source_alias": "Cube Calendar"
       },
       {
+        "base_type": "type/Float",
+        "name": "Gross margin (%)",
+        "display_name": "Gross margin (%)",
+        "source": "aggregation",
+        "field_ref": [
+          "aggregation",
+          0
+        ]
+      },
+      {
+        "base_type": "type/Float",
+        "name": "Debt/Equity (%)",
         "display_name": "Debt/Equity (%)",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           1
-        ],
-        "name": "Debt/Equity (%)",
-        "base_type": "type/Float",
-        "effective_type": "type/Integer",
-        "semantic_type": null,
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 0.0629,
-              "q1": 0.0629,
-              "q3": 0.0629,
-              "max": 0.0629,
-              "sd": null,
-              "avg": 0.0629
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Float",
+        "name": "Marketing/Sales (%)",
         "display_name": "Marketing/Sales (%)",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           2
-        ],
-        "name": "Marketing/Sales (%)",
-        "base_type": "type/Float",
-        "effective_type": "type/Float",
-        "semantic_type": null,
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 0.004326767239812995,
-              "q1": 0.004326767239812995,
-              "q3": 0.004326767239812995,
-              "max": 0.004326767239812995,
-              "sd": null,
-              "avg": 0.004326767239812995
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Decimal",
+        "semantic_type": null,
+        "name": "Net income",
         "display_name": "Net income",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           3
-        ],
-        "name": "Net income",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Float",
-        "semantic_type": "type/Income",
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 3771323.13,
-              "q1": 3771323.13,
-              "q3": 3771323.13,
-              "max": 3771323.13,
-              "sd": null,
-              "avg": 3771323.13
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Decimal",
+        "semantic_type": null,
+        "name": "Debt",
         "display_name": "Debt",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           4
-        ],
-        "name": "Debt",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Float",
-        "semantic_type": null,
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 2516000.0,
-              "q1": 2516000.0,
-              "q3": 2516000.0,
-              "max": 2516000.0,
-              "sd": null,
-              "avg": 2516000.0
-            }
-          }
-        }
+        ]
       },
       {
-        "display_name": "Sales",
+        "base_type": "type/Decimal",
         "semantic_type": null,
+        "name": "Sales",
+        "display_name": "Sales",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           5
-        ],
-        "name": "Sales",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Decimal",
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 25330690.08,
-              "q1": 25330690.08,
-              "q3": 25330690.08,
-              "max": 25330690.08,
-              "sd": null,
-              "avg": 25330690.08
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Float",
+        "name": "Cogs",
         "display_name": "Cogs",
-        "semantic_type": null,
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           6
-        ],
-        "name": "Cogs",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Decimal",
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 18289695.75,
-              "q1": 18289695.75,
-              "q3": 18289695.75,
-              "max": 18289695.75,
-              "sd": null,
-              "avg": 18289695.75
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Float",
+        "name": "Marketing",
         "display_name": "Marketing",
-        "semantic_type": null,
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           7
-        ],
-        "name": "Marketing",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Decimal",
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 109600.0,
-              "q1": 109600.0,
-              "q3": 109600.0,
-              "max": 109600.0,
-              "sd": null,
-              "avg": 109600.0
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Float",
+        "name": "Financial Expenses",
         "display_name": "Financial Expenses",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           8
-        ],
-        "name": "Financial Expenses",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Decimal",
-        "semantic_type": null,
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 280071.2,
-              "q1": 280071.2,
-              "q3": 280071.2,
-              "max": 280071.2,
-              "sd": null,
-              "avg": 280071.2
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Float",
+        "name": "Rent & Salaries",
         "display_name": "Rent & Salaries",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           9
-        ],
-        "name": "Rent & Salaries",
-        "base_type": "type/Decimal",
-        "effective_type": "type/Decimal",
-        "semantic_type": null,
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 2880000.0,
-              "q1": 2880000.0,
-              "q3": 2880000.0,
-              "max": 2880000.0,
-              "sd": null,
-              "avg": 2880000.0
-            }
-          }
-        }
+        ]
       },
       {
+        "base_type": "type/Float",
+        "name": "Net margin (%)",
         "display_name": "Net margin (%)",
+        "source": "aggregation",
         "field_ref": [
           "aggregation",
           10
-        ],
-        "name": "Net margin (%)",
-        "base_type": "type/Float",
-        "effective_type": "type/Decimal",
-        "semantic_type": "type/GrossMargin",
-        "fingerprint": {
-          "global": {
-            "distinct-count": 1,
-            "nil%": 0.0
-          },
-          "type": {
-            "type/Number": {
-              "min": 0.1488835526426369,
-              "q1": 0.1488835526426369,
-              "q3": 0.1488835526426369,
-              "max": 0.1488835526426369,
-              "sd": null,
-              "avg": 0.1488835526426369
-            }
-          }
-        }
+        ]
       }
     ]
   },
@@ -5909,7 +5804,7 @@
               "cube_financial.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -5936,7 +5831,7 @@
               "cube_financial.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -5964,7 +5859,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -6007,7 +5902,7 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 80,
+        "table_id": 231,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date",
@@ -6023,18 +5918,18 @@
         "effective_type": "type/Date",
         "nfc_path": null,
         "parent_id": null,
-        "id": 762,
+        "id": 2264,
         "visibility_type": "normal",
         "display_name": "Date",
         "fingerprint": {
           "global": {
-            "distinct-count": 12,
+            "distinct-count": 48,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2022-11-16",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-01",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -6043,7 +5938,7 @@
       {
         "description": null,
         "semantic_type": "type/Company",
-        "table_id": 80,
+        "table_id": 231,
         "coercion_strategy": null,
         "name": "company",
         "settings": null,
@@ -6056,12 +5951,12 @@
         "effective_type": "type/Text",
         "nfc_path": null,
         "parent_id": null,
-        "id": 770,
+        "id": 2272,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -6106,7 +6001,7 @@
               "cube_financial.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -6134,7 +6029,7 @@
               "cube_financial.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -6162,7 +6057,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "line",
     "visualization_settings": {
@@ -6181,25 +6076,21 @@
       {
         "description": null,
         "semantic_type": "type/Company",
-        "table_id": 80,
         "coercion_strategy": null,
         "name": "company",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_financial.company",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 770,
+        "id": 2272,
         "visibility_type": "normal",
         "display_name": "Company",
         "fingerprint": {
           "global": {
-            "distinct-count": 8,
+            "distinct-count": 5,
             "nil%": 0.0
           },
           "type": {
@@ -6217,12 +6108,10 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 80,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_financial.date",
@@ -6231,36 +6120,50 @@
           }
         ],
         "effective_type": "type/Date",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 762,
+        "id": 2264,
         "visibility_type": "normal",
         "display_name": "Date",
         "fingerprint": {
           "global": {
-            "distinct-count": 12,
+            "distinct-count": 48,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2022-11-16",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-01",
+              "latest": "2022-12-13"
             }
           }
         },
         "base_type": "type/Date"
       },
       {
-        "base_type": "type/Decimal",
+        "display_name": "Somme de Amount",
         "semantic_type": null,
         "settings": null,
-        "name": "sum",
-        "display_name": "Somme de Amount",
-        "source": "aggregation",
         "field_ref": [
           "aggregation",
           0
-        ]
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 30,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -69000.0,
+              "q1": 245135.75,
+              "q3": 622879.25,
+              "max": 1025768.05,
+              "sd": 299416.0448305138,
+              "avg": 429027.00176470587
+            }
+          }
+        }
       }
     ]
   },
@@ -6268,7 +6171,7 @@
     "name": "Gross Margin By Product and Date",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "native": {
         "query": "SELECT \n  \"sales\".\"date\" AS \"date\",\n  \"sales\".\"product\" AS \"product\",\n  \n  (\n    (\n      CAST(\n        (\n          sum(\"sales\".\"sum\") - sum(\"inventory\".\"COGS\")\n        ) AS float\n      ) / CASE WHEN sum(\"sales\".\"sum\") = 0 THEN NULL ELSE sum(\"sales\".\"sum\") END\n    ) * 100\n  ) AS \"Gross margin\" \nFROM \n  (\n    SELECT \n      \"cube_sales\".\"company\" AS \"company\", \n      \"cube_sales\".\"classroom\" AS \"classroom\", \n      \"cube_sales\".\"game\" AS \"game\", \n      \"cube_sales\".\"product\" AS \"product\", \n      \"cube_sales\".\"date_invoice\" AS \"date\",\n      sum(\"cube_sales\".\"price_total\") AS \"sum\" \n    FROM \n      \"cube_sales\" \n    WHERE \n  (\n    {{ classroom }} AND\n    {{ game }} AND\n    {{ company }}\n  ) \n    GROUP BY \n      \"cube_sales\".\"company\", \n      \"cube_sales\".\"classroom\", \n      \"cube_sales\".\"game\", \n      \"cube_sales\".\"product\" ,\n      \"cube_sales\".\"date_invoice\"\n  ) \"sales\" \n  INNER JOIN (\n    SELECT \n      \"cube_inventory\".\"company\" AS \"company\", \n      \"cube_inventory\".\"product\" AS \"product\", \n      \"cube_inventory\".\"game\" AS \"game\", \n      \"cube_inventory\".\"classroom\" AS \"classroom\", \n      \"cube_inventory\".\"date\",\n      (\n        sum(\"cube_inventory\".\"valuation\") * -1\n      ) AS \"COGS\" \n    FROM \n      \"cube_inventory\" \n    WHERE \n      \"cube_inventory\".\"destination\" = 'Customers' \n    GROUP BY \n      \"cube_inventory\".\"company\", \n      \"cube_inventory\".\"product\", \n      \"cube_inventory\".\"game\", \n      \"cube_inventory\".\"classroom\",\n      \"cube_inventory\".\"date\"\n  ) \"inventory\" ON (\n    \"sales\".\"company\" = \"inventory\".\"company\" \n    AND \"sales\".\"classroom\" = \"inventory\".\"classroom\" \n    AND \"sales\".\"game\" = \"inventory\".\"game\" \n    AND \"sales\".\"product\" = \"inventory\".\"product\"\n    AND \"sales\".\"date\" = \"inventory\".\"date\"\n  ) \nGROUP BY \n  \"sales\".\"product\",\n  \"sales\".\"date\"\nORDER BY \n  \"sales\".\"date\" ASC, \n  \"sales\".\"product\" ASC\n",
         "template-tags": {
@@ -6284,7 +6187,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "2-PTA"
+              "3-EED"
             ],
             "required": true
           },
@@ -6300,7 +6203,7 @@
             ],
             "widget-type": "string/=",
             "default": [
-              "Extended-2 2-PTA"
+              "Extended"
             ],
             "required": true
           },
@@ -6374,7 +6277,7 @@
         "name": "Classroom",
         "slug": "classroom",
         "default": [
-          "2-PTA"
+          "3-EED"
         ]
       },
       {
@@ -6390,7 +6293,7 @@
         "name": "Game",
         "slug": "game",
         "default": [
-          "Extended-2 2-PTA"
+          "Extended"
         ]
       },
       {
@@ -6407,13 +6310,99 @@
         "slug": "company"
       }
     ],
-    "result_metadata": null
+    "result_metadata": [
+      {
+        "display_name": "date",
+        "field_ref": [
+          "field",
+          "date",
+          {
+            "base-type": "type/Date"
+          }
+        ],
+        "name": "date",
+        "base_type": "type/Date",
+        "effective_type": "type/Date",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 26,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/DateTime": {
+              "earliest": "2022-10-08T00:00:00Z",
+              "latest": "2022-11-05T00:00:00Z"
+            }
+          }
+        }
+      },
+      {
+        "display_name": "product",
+        "field_ref": [
+          "field",
+          "product",
+          {
+            "base-type": "type/Text"
+          }
+        ],
+        "name": "product",
+        "base_type": "type/Text",
+        "effective_type": "type/Text",
+        "semantic_type": null,
+        "fingerprint": {
+          "global": {
+            "distinct-count": 11,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Text": {
+              "percent-json": 0.0,
+              "percent-url": 0.0,
+              "percent-email": 0.0,
+              "percent-state": 0.0,
+              "average-length": 26.078125
+            }
+          }
+        }
+      },
+      {
+        "display_name": "Gross margin",
+        "field_ref": [
+          "field",
+          "Gross margin",
+          {
+            "base-type": "type/Float"
+          }
+        ],
+        "name": "Gross margin",
+        "base_type": "type/Float",
+        "effective_type": "type/Float",
+        "semantic_type": "type/GrossMargin",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 51,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": -1.4639802869981158,
+              "q1": 20.69805194805194,
+              "q3": 27.486827324410136,
+              "max": 39.46731234866828,
+              "sd": 8.761622989394365,
+              "avg": 24.33683601754598
+            }
+          }
+        }
+      }
+    ]
   },
   {
     "name": "Marketing Products per Day",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_marketing_report",
         "filter": [
@@ -6425,7 +6414,7 @@
               "cube_marketing_report.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -6443,7 +6432,7 @@
               "cube_marketing_report.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -6490,7 +6479,7 @@
       {
         "description": null,
         "semantic_type": "type/CreationDate",
-        "table_id": 79,
+        "table_id": 230,
         "coercion_strategy": null,
         "unit": "day",
         "name": "start_date",
@@ -6506,18 +6495,18 @@
         "effective_type": "type/Date",
         "nfc_path": null,
         "parent_id": null,
-        "id": 744,
+        "id": 2246,
         "visibility_type": "normal",
         "display_name": "Start Date",
         "fingerprint": {
           "global": {
-            "distinct-count": 27,
+            "distinct-count": 32,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-09",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-05",
+              "latest": "2022-12-14"
             }
           }
         },
@@ -6526,7 +6515,7 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 79,
+        "table_id": 230,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
@@ -6539,7 +6528,7 @@
         "effective_type": "type/Text",
         "nfc_path": null,
         "parent_id": null,
-        "id": 746,
+        "id": 2248,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -6553,7 +6542,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 29.444444444444443
+              "average-length": 29.2972972972973
             }
           }
         },
@@ -6577,7 +6566,7 @@
     "name": "Production Product and Quantity per Day",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_production",
         "filter": [
@@ -6609,7 +6598,7 @@
               "cube_production.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ],
           [
             "=",
@@ -6618,7 +6607,7 @@
               "cube_production.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ]
         ],
         "aggregation": [
@@ -6715,7 +6704,7 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 85,
+        "table_id": 236,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date_finished",
@@ -6731,18 +6720,18 @@
         "effective_type": "type/Date",
         "nfc_path": null,
         "parent_id": null,
-        "id": 956,
+        "id": 2445,
         "visibility_type": "normal",
         "display_name": "Date Finished",
         "fingerprint": {
           "global": {
-            "distinct-count": 32,
+            "distinct-count": 50,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-12",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-07",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -6751,7 +6740,7 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 85,
+        "table_id": 236,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
@@ -6764,12 +6753,12 @@
         "effective_type": "type/Text",
         "nfc_path": null,
         "parent_id": null,
-        "id": 970,
+        "id": 2452,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
           "global": {
-            "distinct-count": 14,
+            "distinct-count": 17,
             "nil%": 0.0
           },
           "type": {
@@ -6778,7 +6767,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 27.35843373493976
+              "average-length": 27.965437788018434
             }
           }
         },
@@ -6802,7 +6791,7 @@
     "name": "Purchases Coffee Quantity per Day",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_purchases",
         "filter": [
@@ -6814,7 +6803,7 @@
               "cube_purchases.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -6841,7 +6830,7 @@
               "cube_purchases.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -6886,20 +6875,16 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 82,
         "coercion_strategy": null,
         "name": "supplier",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_purchases.supplier",
           null
         ],
         "effective_type": "type/Text",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 840,
+        "id": 2336,
         "visibility_type": "normal",
         "display_name": "Supplier",
         "fingerprint": {
@@ -6913,7 +6898,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 18.721649484536083
+              "average-length": 18.84775641025641
             }
           }
         },
@@ -6922,12 +6907,10 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 82,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date_purchase",
         "settings": null,
-        "source": "breakout",
         "field_ref": [
           "field",
           "cube_purchases.date_purchase",
@@ -6936,36 +6919,50 @@
           }
         ],
         "effective_type": "type/Date",
-        "nfc_path": null,
-        "parent_id": null,
-        "id": 839,
+        "id": 2335,
         "visibility_type": "normal",
         "display_name": "Date Purchase",
         "fingerprint": {
           "global": {
-            "distinct-count": 28,
+            "distinct-count": 45,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2022-11-16",
-              "latest": "2023-02-19"
+              "earliest": "2022-10-02",
+              "latest": "2022-12-11"
             }
           }
         },
         "base_type": "type/Date"
       },
       {
-        "base_type": "type/Decimal",
+        "display_name": "Somme de Quantity Ordered",
         "semantic_type": null,
         "settings": null,
-        "name": "sum",
-        "display_name": "Somme de Quantity Ordered",
-        "source": "aggregation",
         "field_ref": [
           "aggregation",
           0
-        ]
+        ],
+        "name": "sum",
+        "base_type": "type/Decimal",
+        "effective_type": "type/Decimal",
+        "fingerprint": {
+          "global": {
+            "distinct-count": 12,
+            "nil%": 0.0
+          },
+          "type": {
+            "type/Number": {
+              "min": 5000.0,
+              "q1": 12905.69415042095,
+              "q3": 30418.86116991581,
+              "max": 50000.0,
+              "sd": 13108.049360198936,
+              "avg": 22059.823529411766
+            }
+          }
+        }
       }
     ]
   },
@@ -6973,7 +6970,7 @@
     "name": "Purchases Quantity and Price per Product and Supplier",
     "description": null,
     "dataset_query": {
-      "database": "Aroolla 2-PTA",
+      "database": "Aroolla 3-EED",
       "query": {
         "source-table": "cube_purchases",
         "filter": [
@@ -6985,7 +6982,7 @@
               "cube_purchases.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -7022,7 +7019,7 @@
               "cube_purchases.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ]
         ],
         "aggregation": [
@@ -7102,7 +7099,7 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 82,
+        "table_id": 233,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
@@ -7115,7 +7112,7 @@
         "effective_type": "type/Text",
         "nfc_path": null,
         "parent_id": null,
-        "id": 829,
+        "id": 2325,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -7129,7 +7126,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 16.991163475699558
+              "average-length": 17.46794871794872
             }
           }
         },
@@ -7138,7 +7135,7 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 82,
+        "table_id": 233,
         "coercion_strategy": null,
         "name": "price_unit",
         "settings": null,
@@ -7151,22 +7148,22 @@
         "effective_type": "type/Decimal",
         "nfc_path": null,
         "parent_id": null,
-        "id": 827,
+        "id": 2323,
         "visibility_type": "normal",
         "display_name": "Price Unit",
         "fingerprint": {
           "global": {
-            "distinct-count": 17,
+            "distinct-count": 19,
             "nil%": 0.0
           },
           "type": {
             "type/Number": {
               "min": 0.02,
-              "q1": 0.45379557281638405,
-              "q3": 8.452270470858823,
+              "q1": 0.4426096109905742,
+              "q3": 8.075085219737227,
               "max": 100.0,
-              "sd": 31.545852310762402,
-              "avg": 16.03774668630339
+              "sd": 35.82075436579426,
+              "avg": 19.824935897435896
             }
           }
         },
@@ -7175,7 +7172,7 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 82,
+        "table_id": 233,
         "coercion_strategy": null,
         "name": "supplier",
         "settings": null,
@@ -7188,7 +7185,7 @@
         "effective_type": "type/Text",
         "nfc_path": null,
         "parent_id": null,
-        "id": 840,
+        "id": 2336,
         "visibility_type": "normal",
         "display_name": "Supplier",
         "fingerprint": {
@@ -7202,7 +7199,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 18.721649484536083
+              "average-length": 18.84775641025641
             }
           }
         },
@@ -7282,7 +7279,7 @@
               "cube_sales.game",
               null
             ],
-            "Extended-2 2-PTA"
+            "Extended"
           ],
           [
             "=",
@@ -7291,7 +7288,7 @@
               "cube_sales.classroom",
               null
             ],
-            "2-PTA"
+            "3-EED"
           ],
           [
             "=",
@@ -7304,7 +7301,7 @@
           ]
         ]
       },
-      "database": "Aroolla 2-PTA"
+      "database": "Aroolla 3-EED"
     },
     "display": "bar",
     "visualization_settings": {
@@ -7411,7 +7408,7 @@
       {
         "description": null,
         "semantic_type": null,
-        "table_id": 81,
+        "table_id": 232,
         "coercion_strategy": null,
         "unit": "day",
         "name": "date_due",
@@ -7427,18 +7424,18 @@
         "effective_type": "type/Date",
         "nfc_path": null,
         "parent_id": null,
-        "id": 791,
+        "id": 2293,
         "visibility_type": "normal",
         "display_name": "Date Due",
         "fingerprint": {
           "global": {
-            "distinct-count": 34,
+            "distinct-count": 53,
             "nil%": 0.0
           },
           "type": {
             "type/DateTime": {
-              "earliest": "2023-01-08",
-              "latest": "2023-02-20"
+              "earliest": "2022-10-08",
+              "latest": "2022-12-13"
             }
           }
         },
@@ -7447,7 +7444,7 @@
       {
         "description": null,
         "semantic_type": "type/Category",
-        "table_id": 81,
+        "table_id": 232,
         "coercion_strategy": null,
         "name": "product",
         "settings": null,
@@ -7460,7 +7457,7 @@
         "effective_type": "type/Text",
         "nfc_path": null,
         "parent_id": null,
-        "id": 796,
+        "id": 2298,
         "visibility_type": "normal",
         "display_name": "Product",
         "fingerprint": {
@@ -7474,7 +7471,7 @@
               "percent-url": 0.0,
               "percent-email": 0.0,
               "percent-state": 0.0,
-              "average-length": 25.818832391713748
+              "average-length": 26.861474624960103
             }
           }
         },
